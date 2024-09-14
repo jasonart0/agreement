@@ -53,11 +53,11 @@
                 <td>{{ $contract->employer_address }}</td>
                 <td>{{ $contract->employee_name }}</td>
                 <td>{{ $contract->job_title }}</td>
-                <td><img src="{{ $contract->signature_step1 }}" style="width: 100px;" /></td>
+                {{-- <td><img src="{{ $contract->signature_step1 }}" style="width: 100px;" /></td>
                 <td><img src="{{ $contract->signature_step2 }}" style="width: 100px;" /></td>
                 <td><img src="{{ $contract->signature_step3 }}" style="width: 100px;" /></td>
                 <td><img src="{{ $contract->signature_step4 }}" style="width: 100px;" /></td>
-                <td><img src="{{ $contract->signature_step5 }}" style="width: 100px;" /></td>
+                <td><img src="{{ $contract->signature_step5 }}" style="width: 100px;" /></td> --}}
                 <td>
                     <!-- You can add actions like View, Edit, Delete here -->
                     <a href="#">View</a>
