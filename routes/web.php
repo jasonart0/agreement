@@ -15,7 +15,7 @@ use App\Http\Controllers\EmploymentContractController;
 */
 
 Route::get('/', function () {
-    return view('employment_contract_form');
+    return view('welcome');
 });
 
 
