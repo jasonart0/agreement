@@ -90,6 +90,7 @@
     @csrf
     <!-- Step 1: Introduction and Parties -->
     <div class="wizard-step active" id="step1">
+    @include('page1')
         <div class="contract-header">EMPLOYMENT CONTRACT</div>
         <div class="form-section">
             <p>This Employment Contract (the "Agreement") is entered into between:</p>
