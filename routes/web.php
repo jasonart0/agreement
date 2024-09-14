@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmploymentContractController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('employment_contract_form');
 });
+
+
+// Route to display the form
+Route::get('/employment-contract', [EmploymentContractController::class, 'showForm'])->name('contract.form');
+
+// Route to handle form submission (POST)
+Route::post('/employment-contract/store', [EmploymentContractController::class, 'store'])->name('contract.store');
+Route::get('/dashboard', [EmploymentContractController::class, 'showDashboard'])->name('dashboard');
+
