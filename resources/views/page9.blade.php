@@ -1,75 +1,44 @@
-
-
 <div class="step active">
-    <h3 class="contract-title">Employment Contract</h3>
+    <h3 class="contract-title text-start"></h3>
     <div class="parties">
-        <p class="text-center mt-2">THIS EMPLOYMENT CONTRACT (the "Agreement") dated this </p>
-        <div class="flex-row">
-            <label for="contractDay">Day</label>
-            <input type="text" required class="input-field" id="contractDay" />
-            <span>day of </span>
-            <label for="contract_month">Month</label>
-            <input type="text" required class="input-field" id="contract_month" name="contract_month"
-                value="{{ old('contract_month') }}" />,
-            <label for="contract_year">Year</label>
-            <input type="text" required class="input-field" id="contract_year" name="contract_year"
-                value="{{ old('contract_year') }}" />.
-        </div>
-        <p>BETWEEN:</p>
-        <p><strong>HybridX Inc.<br /></strong> of 50 Steeles Ave E unit 211, Milton Ontario L9T 4W9, Canada (the
-            "Employer")</p>
-        <p>OF THE FIRST PART</p>
-        <h5 class="text-center">- AND -</h5>
-        <label for="employee_name">Employee Name</label>
-        <input type="text" required class="input-field w-100" id="employee_name" name="employee_name"
-            value="{{ old('employee_name') }}" />
-        <p class="text-center mt-2">(the "Employee")</p>
-        <p>OF THE SECOND PART</p>
-    </div>
+        <ul>
+            <li>The Termination Date specified by either the Employee or the Employer may expire on any day of the month and upon the Termination Date the Employer will forthwith pay to the Employee any outstanding portion of the compensation including any accrued vacation and banked time, if any, calculated to the Termination Date</li>
+            <li>Once notice has been given by either party for any reason, the Employee and the Employer agree to execute their duties and obligations under this Agreement diligently and in good faith through to the end of the notice period. The Employer may not make any changes to compensation or any other term or condition of this Agreement between the time termination notice is given through to the end of the notice period.</li>
+        </ul>
+        <h3 class="contract-title text-start">REMEDIES</h3>
+        <ul>
+            <li>In the event of a breach or threatened breach by the Employee of any of the provisions of this Agreement, the Employee agrees that the Employer is entitled to a permanent injunction, in addition to and not in limitation of any other rights and remedies available to the Employer at law or in equity, in order to prevent or restrain any such breach by the Employee or by the Employee's partners, agents, representatives, servants, employees, and/or any and all persons directly or indirectly acting for or with the Employee.</li>
+        </ul>
+        <h3 class="contract-title text-start">SEVERABILITY</h3>
+        <ul>
+            <li>The Employer and the Employee acknowledge that this Agreement is reasonable, valid, and enforceable. However, if any term, covenant, condition or provision of this Agreement is held by a court of competent jurisdiction to be invalid, void, or unenforceable, it is the parties' intent that such provision be changed in scope by the court only to the extent deemed necessary by that court to render the provision reasonable and enforceable and the remainder of the provisions of this Agreement will in no way be affected, impaired, or invalidated as a result.</li>
+        </ul>
+        <h3 class="contract-title text-start">SEVERABILITY</h3>
+        <ul>
+            <li>Any notices, deliveries, requests, demands, or other communications required here will be deemed to be completed when hand-delivered, delivered by agent, or seven days after being placed in the post, postage prepaid, to the parties at the following addresses or as the parties may later designate in writing:
+                <h3 class="contract-title text-start mt-3">Employer:</h3>
 
-    <div class="background">
-        <div class="section-title">Background:</div>
-        <p class="clause">
-            <strong>A.</strong> The Employer is of the opinion that the Employee has the necessary qualifications,
-            experience, and abilities to assist and benefit the Employer in its business.
-        </p>
-        <p class="clause">
-            <strong>B.</strong> The Employer desires to employ the Employee and the Employee has agreed to accept and
-            enter such employment upon the terms and conditions set out in this Agreement.
-        </p>
-        <p>
-            <strong>IN CONSIDERATION OF</strong> the matters described above and of the mutual benefits and obligations
-            set forth in this Agreement, the receipt and sufficiency of which consideration is hereby acknowledged, the
-            parties to this Agreement agree as follows:
-        </p>
-    </div>
+                <div class="d-flex align-items-center gap-5">
+                    <label class="contract-title-1" for="">Name:</label>
+                    <p class="m-0 contract-title-1">HybridX Inc.</p>
+                </div>
+                <div class="d-flex align-items-center gap-4">
+                    <label class="contract-title-1" for="">Address:</label>
+                    <a class="contract-title-1" href="">50 Steeles Ave E unit 211 , Milton Ontario L9T4W9</a>
+                </div>
+                <div class="contract-title text-start text-capitalize mt-3">Employee:</div>
 
-    <div class="commencement">
-        <div class="section-title">Commencement Date and Term</div>
-        <div class="">
-            <p class="clause">
-                <strong>1.</strong> The Employee will commence permanent full-time employment with the Employer on the
-            </p><br />
-            <div class="flex-row">
-                <label for="commencement_day">Day</label>
-                <input type="text" required class="input-field" id="commencement_day" name="commencement_day"
-                    value="{{ old('commencement_day') }}" />
-                <span>day of </span>
-                <label for="commencement_month">Month</label>
-                <input type="text" required class="input-field" id="commencement_month" name="commencement_month"
-                    value="{{ old('commencement_month') }}" />,
-                <label for="commencement_year">Year</label>
-                <input type="text" required class="input-field" id="commencement_year" name="commencement_year"
-                    value="{{ old('commencement_year') }}" />
-            </div>
-            <p class="text-center mt-2">(the "Commencement Date").</p>
-        </div>
-        <p class="clause">
-            <strong>2.</strong> The Employee must successfully complete a probationary period of Eight weeks (the
-            'Probationary Period') beginning on the Commencement Date. At any time during the Probationary Period, as
-            and where permitted by law, the Employer will have the right to terminate employment without any notice or
-            compensation to the Employee other than wages owed for hours of work already completed.
-        </p>
+                <div class="d-flex align-items-center gap-5">
+                    <label class="contract-title-1" for="">Name:</label>
+                    <input class="input-field" type="text" name="employee_name" value="{{ old("employee_name") }}">
+                </div>
+                <div class="d-flex align-items-center gap-4">
+                    <label class="contract-title-1" for="">Address:</label>
+                    <input class="input-field" type="text" name="employee_address" value="{{ old("employee_address") }}">
+                </div>
+            </li>
+        </ul>
+
         <!-- Trigger Button -->
 
         <div class="d-flex" id="openModalBtn">
@@ -87,11 +56,20 @@
             </div>
         </div>
     </div>
-    <div class="form-footer">
-        <div class="form-footer">
-            <button type="button" onclick="prevStep()">Previous</button>
-            <button type="button" onclick="nextStep()">Next</button>
+    <div class="signature-section">
+        <canvas id="signaturePad9" class="signature-pad"></canvas>
+        <div class="flex-row mt-3">
+            <label for="signaturePad9">Signature</label>
+            <a href="javascript:;" class="clearsignature" onclick="clearSignature(9)">Clear Signature</a>
+            <input type="hidden" id="signature_step9" name="signature_step9" value="{{ old("signature_step9") }}">
+            @error('signature_step9')
+            <div style="color: red;">{{ $message }}</div>
+            @enderror
         </div>
+    </div>
+    <div class="form-footer">
+        <button type="button" onclick="prevStep()">Previous</button>
+        <button type="button" onclick="nextStep()">Next</button>
     </div>
     {{-- <button type="button" class="" onclick="nextStep()">Next</button> --}}
 </div>

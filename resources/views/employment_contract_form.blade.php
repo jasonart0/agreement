@@ -40,9 +40,16 @@
             text-align: right;
         }
         .signature-section {
-            border-top: 2px solid #000;
+            /* border-top: 2px solid #000; */
             margin-top: 30px;
             padding-top: 10px;
+            width: 300px;
+        }
+        .clearsignature {
+            color: #000;
+            text-decoration: none;
+            padding: 5px;
+            border: 1px solid #ccc;
         }
         .signature-label {
             font-style: italic;
@@ -57,6 +64,15 @@
         ol li{
             margin-top: 10px;
             font-size: 14px;
+        }
+        .contract-title-1{
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color:#000;
+        }
+        .signature-container, #openModalBtn {
+            display:none !important;
         }
     </style>
 
@@ -141,6 +157,9 @@
             margin-right: 3px;
             /* Reduced margin */
         }
+        .w-80 {
+            width: 80%;
+        }
 
         .button-container {
             text-align: center;
@@ -207,7 +226,7 @@
     </style>
 
 </head>
-<body>
+<bod>
     <div class="container mt-5">
 
         @if ($errors->any())
@@ -227,7 +246,7 @@
             </div>
         @endif
 
-        <form id="employmentContractForm" method="POST" onsubmit="event.preventDefault();" action="{{ route('contract.store') }}">
+        <form id="employmentContractForm" method="POST" action="{{ route('contract.store') }}">
 
             @csrf
             <!-- Step 1: Introduction and Parties -->
@@ -256,20 +275,7 @@
                     @enderror
                 </div>
 
-                <div class="signature-section">
-                    <label for="signaturePad1">Signature</label>
-                    <canvas id="signaturePad1" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(1)">Clear Signature</button>
-                    <input type="hidden" id="signature_step1" name="signature_step1" value="{{ old("signature_step1") }}">
-                    @error('signature_step1')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                </div> --}}
-
-                {{-- <div class="form-footer">
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div> --}}
+                --}}
             </div>
 
             <!-- Step 2: Job Title and Description -->
@@ -313,15 +319,10 @@
                 </div> --}}
 
 
-
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
 
             <!-- Step 4: Benefits and Vacation -->
-            <div class="wizard-step " id="step4">
+            <div class="wizard-step" id="step4">
                 @include("page4")
                 {{-- <div class="contract-header">BENEFITS AND VACATION</div>
                 <div class="form-section">
@@ -338,174 +339,44 @@
                     @enderror
                 </div> --}}
 
-                <div class="signature-section">
-                    <label for="signaturePad4">Signature</label>
-                    <canvas id="signaturePad4" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(4)">Clear Signature</button>
-                    <input type="hidden" id="signature_step4" name="signature_step4" value="{{ old("signature_step4") }}">
-                    @error('signature_step4')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
 
             <!-- Step 5: Confidentiality and Final Submission -->
             <div class="wizard-step" id="step5">
                 @include("page5")
-                {{-- <div class="contract-header">CONFIDENTIALITY</div>
-                <div class="form-section">
-                    <label for="confidentiality_agree">Agree to Confidentiality Clause</label>
-                    <!-- Hidden input with default value (unchecked value) -->
-                    <input type="hidden" name="confidentiality_agree" value="0">
-                    <input type="checkbox" id="confidentiality_agree" name="confidentiality_agree" value="1" {{ old('confidentiality_agree') ? 'checked' : '' }}>
-                    @error('confidentiality_agree')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
-                <div class="signature-section">
-                    <label for="signaturePad5">Signature</label>
-                    <canvas id="signaturePad5" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(5)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
 
             <!-- Step 6: Benefits and Vacation -->
             <div class="wizard-step" id="step6">
                 @include("page6")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                </div> --}}
-                <div class="signature-section">
-                    <label for="signaturePad6">Signature</label>
-                    <canvas id="signaturePad6" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(6)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
 
             <!-- Step 7: Benefits and Vacation -->
             <div class="wizard-step" id="step7">
                 @include("page7")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                </div> --}}
-                <div class="signature-section">
-                    <label for="signaturePad7">Signature</label>
-                    <canvas id="signaturePad7" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(7)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
             <!-- Step 8: Benefits and Vacation -->
             <div class="wizard-step" id="step8">
                 @include("page8")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                </div> --}}
-                <div class="signature-section">
-                    <label for="signaturePad8">Signature</label>
-                    <canvas id="signaturePad8" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(8)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
             <!-- Step 9: Benefits and Vacation -->
             <div class="wizard-step" id="step9">
                 @include("page9")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                </div> --}}
-                <div class="signature-section">
-                    <label for="signaturePad9">Signature</label>
-                    <canvas id="signaturePad9" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(9)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
 
             <!-- Step 10: Benefits and Vacation -->
             <div class="wizard-step" id="step10">
                 @include("page10")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                </div> --}}
-                <div class="signature-section">
-                    <label for="signaturePad10">Signature</label>
-                    <canvas id="signaturePad10" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(10)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="button" onclick="nextStep()">Next</button>
-                </div>
             </div>
 
             <!-- Step 11: Benefits and Vacation -->
             <div class="wizard-step" id="step11">
                 @include("page11")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                </div> --}}
-                <div class="signature-section">
-                    <label for="signaturePad11">Signature</label>
-                    <canvas id="signaturePad11" class="signature-pad"></canvas>
-                    <button type="button" onclick="clearSignature(11)">Clear Signature</button>
-                    <input type="hidden" id="signature_step5" name="signature_step5" value="{{ old("signature_step5") }}">
-                    @error('signature_step5')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-                <div class="form-footer">
-                    <button type="button" onclick="prevStep()">Previous</button>
-                    <button type="submit">Submit</button>
-                </div>
+            </div>
+
+            <!-- Step 12: Benefits and Vacation -->
+            <div class="wizard-step" id="step12">
+                @include("page12")
             </div>
 
         </form>
@@ -514,7 +385,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', () => {
           const canvas = document.getElementById('canvas');
           const ctx = canvas.getContext('2d');
@@ -559,7 +430,70 @@
           });
       });
 
-    </script>
+    </script> -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.signature-container').forEach(container => {
+            const openModalBtn = container.querySelector('.openModalBtn');
+            const modal = container.querySelector('.signatureModal');
+            const closeModal = container.querySelector('.close');
+            const canvas = container.querySelector('.signatureCanvas');
+            const ctx = canvas.getContext('2d');
+            const submitSignature = container.querySelector('.submitSignature');
+            const clearSignature = container.querySelector('.clearSignature');
+            const signatureInput = container.querySelector('.signature-input');
+
+            let drawing = false;
+
+            // Open modal when the button is clicked
+            openModalBtn.addEventListener('click', () => {
+                modal.style.display = 'block';
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Start drawing
+            canvas.addEventListener('mousedown', () => {
+                drawing = true;
+            });
+
+            // Draw on the canvas
+            canvas.addEventListener('mousemove', (event) => {
+                if (drawing) {
+                    const rect = canvas.getBoundingClientRect();
+                    const x = event.clientX - rect.left;
+                    const y = event.clientY - rect.top;
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                }
+            });
+
+            // Stop drawing
+            canvas.addEventListener('mouseup', () => {
+                drawing = false;
+                ctx.beginPath();
+            });
+
+            // Clear the canvas
+            clearSignature.addEventListener('click', () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+
+            // Submit the signature and store it in the hidden input field
+            submitSignature.addEventListener('click', () => {
+                const dataURL = canvas.toDataURL('image/png'); // Base64 image format
+                signatureInput.value = dataURL; // Store the base64 string in the hidden input
+
+                // Optionally close the modal after submitting
+                modal.style.display = 'none';
+            });
+        });
+    });
+
+</script>
     <script>
         let currentStep = 1;
         let signaturePads = [];
@@ -583,6 +517,7 @@
         initializeSignaturePad(9);
         initializeSignaturePad(10);
         initializeSignaturePad(11);
+        initializeSignaturePad(12);
         // Add more signature pads for other steps as needed
 
         // Function to show the current step and hide others
@@ -596,7 +531,6 @@
         // Function to move to the next step, checking validation
         function nextStep() {
             let isValid = validateCurrentStep();
-
             if (isValid) {
                 currentStep++;
                 showStep(currentStep);

@@ -1,97 +1,92 @@
-
-
 <div class="step active">
-    <h3 class="contract-title">Employment Contract</h3>
+    <h3 class="contract-title text-start mt-3">MODIFICATION OF AGREEMENT</h3>
     <div class="parties">
-        <p class="text-center mt-2">THIS EMPLOYMENT CONTRACT (the "Agreement") dated this </p>
-        <div class="flex-row">
-            <label for="contractDay">Day</label>
-            <input type="text" required class="input-field" id="contractDay" />
-            <span>day of </span>
-            <label for="contract_month">Month</label>
-            <input type="text" required class="input-field" id="contract_month" name="contract_month"
-                value="{{ old('contract_month') }}" />,
-            <label for="contract_year">Year</label>
-            <input type="text" required class="input-field" id="contract_year" name="contract_year"
-                value="{{ old('contract_year') }}" />.
-        </div>
-        <p>BETWEEN:</p>
-        <p><strong>HybridX Inc.<br /></strong> of 50 Steeles Ave E unit 211, Milton Ontario L9T 4W9, Canada (the
-            "Employer")</p>
-        <p>OF THE FIRST PART</p>
-        <h5 class="text-center">- AND -</h5>
-        <label for="employee_name">Employee Name</label>
-        <input type="text" required class="input-field w-100" id="employee_name" name="employee_name"
-            value="{{ old('employee_name') }}" />
-        <p class="text-center mt-2">(the "Employee")</p>
-        <p>OF THE SECOND PART</p>
-    </div>
 
-    <div class="background">
-        <div class="section-title">Background:</div>
-        <p class="clause">
-            <strong>A.</strong> The Employer is of the opinion that the Employee has the necessary qualifications,
-            experience, and abilities to assist and benefit the Employer in its business.
-        </p>
-        <p class="clause">
-            <strong>B.</strong> The Employer desires to employ the Employee and the Employee has agreed to accept and
-            enter such employment upon the terms and conditions set out in this Agreement.
-        </p>
-        <p>
-            <strong>IN CONSIDERATION OF</strong> the matters described above and of the mutual benefits and obligations
-            set forth in this Agreement, the receipt and sufficiency of which consideration is hereby acknowledged, the
-            parties to this Agreement agree as follows:
-        </p>
-    </div>
 
-    <div class="commencement">
-        <div class="section-title">Commencement Date and Term</div>
-        <div class="">
-            <p class="clause">
-                <strong>1.</strong> The Employee will commence permanent full-time employment with the Employer on the
-            </p><br />
-            <div class="flex-row">
-                <label for="commencement_day">Day</label>
-                <input type="text" required class="input-field" id="commencement_day" name="commencement_day"
-                    value="{{ old('commencement_day') }}" />
-                <span>day of </span>
-                <label for="commencement_month">Month</label>
-                <input type="text" required class="input-field" id="commencement_month" name="commencement_month"
-                    value="{{ old('commencement_month') }}" />,
-                <label for="commencement_year">Year</label>
-                <input type="text" required class="input-field" id="commencement_year" name="commencement_year"
-                    value="{{ old('commencement_year') }}" />
-            </div>
-            <p class="text-center mt-2">(the "Commencement Date").</p>
-        </div>
-        <p class="clause">
-            <strong>2.</strong> The Employee must successfully complete a probationary period of Eight weeks (the
-            'Probationary Period') beginning on the Commencement Date. At any time during the Probationary Period, as
-            and where permitted by law, the Employer will have the right to terminate employment without any notice or
-            compensation to the Employee other than wages owed for hours of work already completed.
-        </p>
-        <!-- Trigger Button -->
+        <ul>
+            <li>Any amendment or modification of this Agreement or additional obligation assumed by either party in connection with this Agreement will only be binding if evidenced in writing signed by each party or an authorized representative of each party. </li>
+        </ul>
 
-        <div class="d-flex" id="openModalBtn">
-            <span>day of </span>
-            <div class="signature-save" id="signature-save"></div>
-        </div>
-
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="d-flex">
-                    <button type="button" class="btn w-100" id="submitBtn">Submit</button>
-                    <button type="button" class="btn w-100" id="clearBtn">Clear</button>
+        <div class="contract-title text-start">ADDITIONAL TERMS</div>
+        <ul>
+            <li class="flex-row"><span>The Employee is expected to generate a minimum sales revenue of</span><span> $<input type="text" class="input-field w-80" id="sales_revenue" name="sales_revenue" value="{{ old("sales_revenue")}}" /></span><span> per week.</span>
+            </li>
+            <li>The Employee cannot give office Leads to any other individual or entity, and cannot be employed anywhere else
+                during the term of employment with HybridX Inc.
+            </li>
+            <li>The salary and commission will be paid on 1st and 15th of every month.
+            </li>
+            <li class="flex-row">
+                <div>The Employee's S.I.N. number is <input type="text" class="input-field w-80" id="sin_number" name="sin_number" value="{{ old("sin_number") }}" /> </div>
+                <div> and the Driver's license number is
+                    <input type="text" class="input-field  w-80" id="drivers_license" name="drivers_license" value="{{ old("drivers_license") }}" />.
                 </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="governing-law">
+        <div class="contract-title text-start">GOVERNING LAW</div>
+        <ul>
+            <li>
+                This Agreement will be construed in accordance with and governed by the laws of the Province of Ontario, Canada.
+            </li>
+        </ul>
+    </div>
+
+    <div class="definitions">
+        <div class="contract-title text-start">DEFINITIONS</div>
+        <ul>
+            <li>For the purpose of this Agreement the following definitions will apply:
+
+                <ul>
+                    <li>'Work Product' means work product information, including but not limited to, work product resulting from or
+                        related to work or projects performed or to be performed for the Employer or for clients of the Employer, of any
+                        type or form in any stage of actual or anticipated research and development.
+                    </li>
+                    <li>'Computer Software' means computer software resulting from or related to work or projects performed or to be
+                        performed for the Employer or for clients of the Employer, of any type or form in any stage of actual or anticipated
+                        research and development, including but not limited to, programs and program modules, routines and subroutines,
+                        processes, algorithms, design concepts, design specifications (design notes, annotations, documentation,
+                        flowcharts, coding sheets, and the like), source code, object code and load modules.
+                    </li>
+                    <li>modules, programming, program patches, and system designs.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Trigger Button -->
+
+    <div class="d-flex" id="openModalBtn">
+        <span>day of </span>
+        <div class="signature-save" id="signature-save"></div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="d-flex">
+                <button type="button" class="btn w-100" id="submitBtn">Submit</button>
+                <button type="button" class="btn w-100" id="clearBtn">Clear</button>
             </div>
+        </div>
+    </div>
+
+    <div class="signature-section">
+        <canvas id="signaturePad10" class="signature-pad"></canvas>
+        <div class="flex-row mt-3">
+            <label for="signaturePad10">Signature</label>
+            <a href="javascript:;" class="clearsignature" onclick="clearSignature(10)">Clear Signature</a>
+            <input type="hidden" id="signature_step10" name="signature_step10" value="{{ old("signature_step10") }}">
+            @error('signature_step10')
+            <div style="color: red;">{{ $message }}</div>
+            @enderror
         </div>
     </div>
     <div class="form-footer">
-        <div class="form-footer">
-            <button type="button" onclick="prevStep()">Previous</button>
-            <button type="button" onclick="nextStep()">Next</button>
-        </div>
+        <button type="button" onclick="prevStep()">Previous</button>
+        <button type="button" onclick="nextStep()">Next</button>
     </div>
     {{-- <button type="button" class="" onclick="nextStep()">Next</button> --}}
 </div>

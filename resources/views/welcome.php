@@ -236,11 +236,11 @@
           </p>
           <!-- Trigger Button -->
 
-          <div class="d-flex" id="openModalBtn">
+          <div class="d-flex openModalBtn">
         <span>day of </span>
         <div class="signature-save" id="signature-save"></div>
     </div>
-   
+
           <div id="myModal" class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>

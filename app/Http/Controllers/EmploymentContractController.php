@@ -18,20 +18,32 @@ class EmploymentContractController extends Controller
         // dd($request->all());
         // Validate the form inputs
         $validated = $request->validate([
-            'employer_name' => 'required|string|max:255',
-            'employer_address' => 'required|string|max:255',
+            'contract_day' => 'required|integer|between:1,31',
+            'contract_month' => 'required|integer|between:1,12',
+            'contract_year' => 'required|integer|digits:4',
             'employee_name' => 'required|string|max:255',
-            'job_title' => 'required|string|max:255',
-            'job_duties' => 'required|string',
-            'salary' => 'required|numeric',
-            'commission' => 'required|numeric',
-            'vacation_days' => 'required|integer',
-            'confidentiality_agree' => 'required|in:1', // This makes sure the checkbox is checked (must be 1)
+            'commencement_day' => 'required|integer|between:1,31',
+            'commencement_month' => 'required|integer|between:1,12',
+            'commencement_year' => 'required|integer|digits:4',
+            'salary' => 'required|numeric|min:0',
+            'gross_profit_commission' => 'required|numeric|min:0',
+            'employee_hours' => 'required|integer|min:0',
+            'vacations' => 'required|string',
+            'employee_address' => 'required|string|max:255',
+            'sin_number' => 'required|string|max:255',
+            'drivers_license' => 'required|string',
             'signature_step1' => 'required|string',
             'signature_step2' => 'required|string',
             'signature_step3' => 'required|string',
             'signature_step4' => 'required|string',
             'signature_step5' => 'required|string',
+            'signature_step6' => 'required|string',
+            'signature_step7' => 'required|string',
+            'signature_step8' => 'required|string',
+            'signature_step9' => 'required|string',
+            'signature_step10' => 'required|string',
+            'signature_step11' => 'required|string',
+            'signature_step12' => 'required|string',
             // Add validation for other signatures and fields
 
         ]);

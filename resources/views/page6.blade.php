@@ -1,75 +1,31 @@
-
-
 <div class="step active">
-    <h3 class="contract-title">Employment Contract</h3>
+    <h3 class="contract-title text-start">CONFIDENTIAL INFORMATION</h3>
     <div class="parties">
-        <p class="text-center mt-2">THIS EMPLOYMENT CONTRACT (the "Agreement") dated this </p>
-        <div class="flex-row">
-            <label for="contractDay">Day</label>
-            <input type="text" required class="input-field" id="contractDay" />
-            <span>day of </span>
-            <label for="contract_month">Month</label>
-            <input type="text" required class="input-field" id="contract_month" name="contract_month"
-                value="{{ old('contract_month') }}" />,
-            <label for="contract_year">Year</label>
-            <input type="text" required class="input-field" id="contract_year" name="contract_year"
-                value="{{ old('contract_year') }}" />.
-        </div>
-        <p>BETWEEN:</p>
-        <p><strong>HybridX Inc.<br /></strong> of 50 Steeles Ave E unit 211, Milton Ontario L9T 4W9, Canada (the
-            "Employer")</p>
-        <p>OF THE FIRST PART</p>
-        <h5 class="text-center">- AND -</h5>
-        <label for="employee_name">Employee Name</label>
-        <input type="text" required class="input-field w-100" id="employee_name" name="employee_name"
-            value="{{ old('employee_name') }}" />
-        <p class="text-center mt-2">(the "Employee")</p>
-        <p>OF THE SECOND PART</p>
-    </div>
+        <ul>
+            <li>Is generally known in the industry of the Employer;</li>
+            <li>Is now or subsequently becomes generally available to the public through no wrongful act of the Employee;</li>
+            <li>Was rightfully in the possession of the Employee prior to the disclosure to the Employee by the Employer;</li>
+            <li>Is independently created by the Employee without direct or indirect use of the Confidential Information; or</li>
+            <li>The Employee rightfully obtains from a third party who has the right to transfer or disclose it.</li>
+            <li>The Confidential Information will also not include anything developed or produced by the Employee during the Employee's term of employment with the Employer, including but not limited to, any intellectual property, process, design, development, creation, research, invention, know-how, trade name, trade-mark or copyright that:</li>
+            <li>Was developed without the use of equipment, supplies, facility or Confidential Information of the Employer</li>
+            <li>Was developed entirely on the Employee's own time;</li>
+            <li>Does not result from any work performed by the Employee for the Employer; and</li>
+            <li>Does not relate to any actual or reasonably anticipated business opportunity of the Employer.</li>
+        </ul>
 
-    <div class="background">
-        <div class="section-title">Background:</div>
-        <p class="clause">
-            <strong>A.</strong> The Employer is of the opinion that the Employee has the necessary qualifications,
-            experience, and abilities to assist and benefit the Employer in its business.
-        </p>
-        <p class="clause">
-            <strong>B.</strong> The Employer desires to employ the Employee and the Employee has agreed to accept and
-            enter such employment upon the terms and conditions set out in this Agreement.
-        </p>
-        <p>
-            <strong>IN CONSIDERATION OF</strong> the matters described above and of the mutual benefits and obligations
-            set forth in this Agreement, the receipt and sufficiency of which consideration is hereby acknowledged, the
-            parties to this Agreement agree as follows:
-        </p>
+
     </div>
 
     <div class="commencement">
-        <div class="section-title">Commencement Date and Term</div>
-        <div class="">
-            <p class="clause">
-                <strong>1.</strong> The Employee will commence permanent full-time employment with the Employer on the
-            </p><br />
-            <div class="flex-row">
-                <label for="commencement_day">Day</label>
-                <input type="text" required class="input-field" id="commencement_day" name="commencement_day"
-                    value="{{ old('commencement_day') }}" />
-                <span>day of </span>
-                <label for="commencement_month">Month</label>
-                <input type="text" required class="input-field" id="commencement_month" name="commencement_month"
-                    value="{{ old('commencement_month') }}" />,
-                <label for="commencement_year">Year</label>
-                <input type="text" required class="input-field" id="commencement_year" name="commencement_year"
-                    value="{{ old('commencement_year') }}" />
-            </div>
-            <p class="text-center mt-2">(the "Commencement Date").</p>
-        </div>
-        <p class="clause">
-            <strong>2.</strong> The Employee must successfully complete a probationary period of Eight weeks (the
-            'Probationary Period') beginning on the Commencement Date. At any time during the Probationary Period, as
-            and where permitted by law, the Employer will have the right to terminate employment without any notice or
-            compensation to the Employee other than wages owed for hours of work already completed.
-        </p>
+        <h3 class="contract-title text-start">DUTIES AND OBLIGATIONS CONCERNING CONFIDENTIAL INFORMATION</h3>
+        <p>The Employee agrees that a material term of the Employee's contract with the Employer is to keep all Confidential Information absolutely confidential and protect its release from the public. The Employee agrees not to divulge, reveal, report or use, for any purpose, any of the Confidential Information which the Employee has obtained or which was disclosed to the Employee by the Employer as a result of the Employee's employment by the Employer. The Employee agrees that if there is any question as to such disclosure then the Employee will seek out senior management of the Employer prior to making any disclosure of the Employer's information that may be covered by this Agreement.</p>
+        <p>The Employee agrees and acknowledges that the Confidential Information is of a proprietary and
+            confidential nature and that any disclosure of the Confidential Information to a third party in
+            breach of this Agreement cannot be reasonably or adequately compensated for in money damages, would cause irreparable injury to Employer, would gravely affect the effective and
+            successful conduct of the Employer's business and goodwill, and would be a material breach of
+            this Agreement.</p>
+
         <!-- Trigger Button -->
 
         <div class="d-flex" id="openModalBtn">
@@ -84,6 +40,18 @@
                     <button type="button" class="btn w-100" id="submitBtn">Submit</button>
                     <button type="button" class="btn w-100" id="clearBtn">Clear</button>
                 </div>
+            </div>
+        </div>
+
+        <div class="signature-section">
+            <canvas id="signaturePad6" class="signature-pad"></canvas>
+            <div class="flex-row mt-3">
+                <label for="signaturePad6">Signature</label>
+                <a href="javascript:;" class="clearsignature" onclick="clearSignature(6)">Clear Signature</a>
+                <input type="hidden" id="signature_step6" name="signature_step6" value="{{ old("signature_step6") }}">
+                @error('signature_step6')
+                <div style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
         </div>
     </div>

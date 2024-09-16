@@ -1,7 +1,7 @@
 <div class="step active">
-    <h3 class="contract-title">Job Title and Description</h3>
+    <h3 class="contract-title text-start">Job Title and Description</h3>
     <div class="parties">
-        <ol>
+        <ul>
             <li>The initial job title of the Employee will be the following: <strong>Sales representative</strong>.</li>
             <li>The initial job duties the Employee will be expected to perform include:</li>
             <ul>
@@ -24,21 +24,24 @@
             <li>The Employee will perform any and all duties as requested by the Employer that are reasonable and that are customarily performed by a person holding a similar position in the industry or business of the Employer. </li>
             <li>The Employer may make changes to the job title or duties of the Employee where the changes would be considered reasonable for a similar position in the industry or business of the Employer. The Employee's job title or duties may be changed by agreement and with the approval of both the Employee and the Employer or after a notice period required under law. </li>
             <li>The Employee agrees to abide by the Employer's rules, regulations, policies, and practices, including those concerning work schedules, vacation, and sick leave, as they may from time to time be adopted or modified. </li>
-        </ol>
+        </ul>
     </div>
 
     <div class="signature-section">
-        <label for="signaturePad2">Signature</label>
         <canvas id="signaturePad2" class="signature-pad"></canvas>
-        <button type="button" onclick="clearSignature(2)">Clear Signature</button>
-        <input type="hidden" id="signature_step2" name="signature_step2" value="{{ old("signature_step2") }}">
-        @error('signature_step2')
+        <div class="flex-row mt-3">
+            <label for="signaturePad2">Signature</label>
+            <a href="javascript:;" class="clearsignature" onclick="clearSignature(2)">Clear Signature</a>
+            <input type="hidden" id="signature_step2" name="signature_step2" value="{{ old("signature_step2") }}">
+            @error('signature_step2')
             <div style="color: red;">{{ $message }}</div>
-        @enderror
+            @enderror
+        </div>
     </div>
 
     <div class="form-footer">
         <button type="button" onclick="prevStep()">Previous</button>
         <button type="button" onclick="nextStep()">Next</button>
     </div>
+
 </div>

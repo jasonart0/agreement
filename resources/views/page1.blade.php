@@ -5,14 +5,14 @@
     <div class="parties">
         <p class="text-center mt-2">THIS EMPLOYMENT CONTRACT (the "Agreement") dated this </p>
         <div class="flex-row">
-            <label for="contractDay">Day</label>
-            <input type="text" required class="input-field" id="contractDay" />
+            <label for="contract_day">Day</label>
+            <input type="number" max="31" min="1" required class="input-field" id="contract_day" name="contract_day" value="{{ old('contract_day') }}"  />
             <span>day of </span>
             <label for="contract_month">Month</label>
-            <input type="text" required class="input-field" id="contract_month" name="contract_month"
+            <input type="text" type="number" max="12" min="1" required class="input-field" id="contract_month" name="contract_month"
                 value="{{ old('contract_month') }}" />,
             <label for="contract_year">Year</label>
-            <input type="text" required class="input-field" id="contract_year" name="contract_year"
+            <input type="number" min="1900" max="2100" required class="input-field" id="contract_year" name="contract_year"
                 value="{{ old('contract_year') }}" />.
         </div>
         <p>BETWEEN:</p>
@@ -52,14 +52,14 @@
             </p><br />
             <div class="flex-row">
                 <label for="commencement_day">Day</label>
-                <input type="text" required class="input-field" id="commencement_day" name="commencement_day"
+                <input type="number" max="31" min="1" required class="input-field" id="commencement_day" name="commencement_day"
                     value="{{ old('commencement_day') }}" />
                 <span>day of </span>
                 <label for="commencement_month">Month</label>
-                <input type="text" required class="input-field" id="commencement_month" name="commencement_month"
+                <input type="number" max="12" min="1" required class="input-field" id="commencement_month" name="commencement_month"
                     value="{{ old('commencement_month') }}" />,
                 <label for="commencement_year">Year</label>
-                <input type="text" required class="input-field" id="commencement_year" name="commencement_year"
+                <input type="number" min="1900" max="2100" required class="input-field" id="commencement_year" name="commencement_year"
                     value="{{ old('commencement_year') }}" />
             </div>
             <p class="text-center mt-2">(the "Commencement Date").</p>
@@ -72,29 +72,39 @@
         </p>
         <!-- Trigger Button -->
 
-        <div class="d-flex" id="openModalBtn">
-            <span>day of </span>
-            <div class="signature-section">
+        <div class="signature-section">
+            <canvas id="signaturePad1" class="signature-pad"></canvas>
+            <div class="flex-row mt-3">
                 <label for="signaturePad1">Signature</label>
-                <canvas id="signaturePad1" class="signature-pad"></canvas>
-                <button type="button" onclick="clearSignature(1)">Clear Signature</button>
+                <a href="javascript:;" class="clearsignature" onclick="clearSignature(1)">Clear Signature</a>
                 <input type="hidden" id="signature_step1" name="signature_step1" value="{{ old("signature_step1") }}">
+
                 @error('signature_step1')
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
-
             </div>
-        </div>
 
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="d-flex">
-                    <button type="button" class="btn w-100" id="submitBtn">Submit</button>
-                    <button type="button" class="btn w-100" id="clearBtn">Clear</button>
+        </div>
+        <!-- Trigger button -->
+
+        <!-- Signature Block 1 -->
+        <div class="signature-container">
+            <div class="d-flex openModalBtn">
+                <span>Signature 1</span>
+            </div>
+            <div class="modal signatureModal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <canvas class="signatureCanvas" width="500" height="200" style="border:1px solid black;"></canvas>
+                    <div class="signatureSave"></div>
+                    <div class="d-flex">
+                        <button type="button" class="btn w-100 submitSignature">Submit</button>
+                        <button type="button" class="btn w-100 clearSignature">Clear</button>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
     <div class="form-footer">
         <div class="form-footer">

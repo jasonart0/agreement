@@ -34,14 +34,14 @@
         <tr>
             <th>ID</th>
             <th>Employer Name</th>
-            <th>Employer Address</th>
             <th>Employee Name</th>
-            <th>Job Title</th>
+            <th>Employee Address</th>
+            <!-- <th>Job Title</th>
             <th>Signature 1</th>
             <th>Signature 2</th>
             <th>Signature 3</th>
             <th>Signature 4</th>
-            <th>Signature 5</th>
+            <th>Signature 5</th> -->
             <th>Actions</th>
         </tr>
     </thead>
@@ -50,9 +50,9 @@
             <tr>
                 <td>{{ $contract->id }}</td>
                 <td>{{ $contract->employer_name }}</td>
-                <td>{{ $contract->employer_address }}</td>
                 <td>{{ $contract->employee_name }}</td>
-                <td>{{ $contract->job_title }}</td>
+                <td>{{ $contract->employee_address }}</td>
+                <!-- <td>{{ $contract->job_title }}</td> -->
                 {{-- <td><img src="{{ $contract->signature_step1 }}" style="width: 100px;" /></td>
                 <td><img src="{{ $contract->signature_step2 }}" style="width: 100px;" /></td>
                 <td><img src="{{ $contract->signature_step3 }}" style="width: 100px;" /></td>

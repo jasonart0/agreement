@@ -26,3 +26,7 @@ Route::get('/employment-contract', [EmploymentContractController::class, 'showFo
 Route::post('/employment-contract/store', [EmploymentContractController::class, 'store'])->name('contract.store');
 Route::get('/dashboard', [EmploymentContractController::class, 'showDashboard'])->name('dashboard');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
