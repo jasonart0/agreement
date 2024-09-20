@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 
-    <?php dd($data); ?>
+
     <title><?php echo (isset($data)) ? $data->employee_name." - Contract Agreement" : "Employment Contract Wizard Form"; ?> </title>
     <style>
         .wizard-step.active {

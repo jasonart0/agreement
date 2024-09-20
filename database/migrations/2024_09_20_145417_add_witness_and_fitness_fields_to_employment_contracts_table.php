@@ -14,6 +14,7 @@ class AddWitnessAndFitnessFieldsToEmploymentContractsTable extends Migration
     public function up()
     {
         Schema::table('employment_contracts', function (Blueprint $table) {
+            $table->string('sales_revenue')->unsigned()->nullable();
             $table->integer('widtness_day')->unsigned()->nullable()->comment('Witness Day of Signing');
             $table->integer('widtness_month')->unsigned()->nullable()->comment('Witness Month of Signing');
             $table->integer('widtness_year')->unsigned()->nullable()->comment('Witness Year of Signing');

@@ -21,6 +21,7 @@ class EmploymentContract extends Model
         'gross_profit_commission',
         'employee_hours',
         'vacations',
+        'sales_revenue',
         'employee_address',
         'sin_number',
         'drivers_license',

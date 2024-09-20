@@ -29,6 +29,7 @@ class EmploymentContractController extends Controller
             'gross_profit_commission' => 'required|numeric|min:0',
             'employee_hours' => 'required|integer|min:0',
             'vacations' => 'required|string',
+            'sales_revenue' => 'required|string|max:255',
             'employee_address' => 'required|string|max:255',
             'sin_number' => 'required|string|max:255',
 

@@ -64,9 +64,9 @@
                 <div class="signature-block">
                     <p><strong>HybridX Inc.</strong></p>
                     <?php $witness_person = ($data) ? $data->witness_person : old("witness_person"); ?>
-                    <p>Per:<input type="text" class="input-field w-90" name="witness_person" value="{{ $witness_person }}" /></p>
+                    <p class="flex-row">Per:<input type="text" class="input-field w-90" name="witness_person" value="{{ $witness_person }}" /></p>
                     <?php $witness_person_name =  ($data) ? $data->witness_person_name : old("witness_person_name"); ?>
-                    <p>Name:<input type="text" class="input-field w-90" name="witness_person_name" value="{{ $witness_person_name }}" /></p>
+                    <p class="flex-row">Name:<input type="text" class="input-field w-90" name="witness_person_name" value="{{ $witness_person_name }}" /></p>
                 </div>
                 <div class="signature-block">
                     <?php $witness_field2 = ($data) ? $data->witness_field2 : old("witness_field2"); ?>
