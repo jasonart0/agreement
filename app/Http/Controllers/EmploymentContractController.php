@@ -31,6 +31,16 @@ class EmploymentContractController extends Controller
             'vacations' => 'required|string',
             'employee_address' => 'required|string|max:255',
             'sin_number' => 'required|string|max:255',
+
+            'widtness_day' => 'required|integer|min:1|max:31',
+            'widtness_month' => 'required|integer|min:1|max:12',
+            'widtness_year' => 'required|integer|min:1900|max:2100',
+            'fitness_field_one' => 'required|string|max:255',
+            'witness_name_1' => 'required|string|max:255',
+            'witness_person' => 'required|string|max:255',
+            'witness_person_name' => 'required|string|max:255',
+            'witness_field2' => 'required|string|max:255',
+
             'drivers_license' => 'required|string',
             'signature_step1' => 'required|string',
             'signature_step2' => 'required|string',

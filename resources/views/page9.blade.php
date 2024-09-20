@@ -30,11 +30,11 @@
 
                 <div class="d-flex align-items-center gap-5">
                     <label class="contract-title-1" for="">Name:</label>
-                    <input class="input-field" type="text" name="employee_name" value="{{ old("employee_name") }}">
+                    <input class="input-field" type="text" name="employee_name" value="{{ old('employee_name') ?? ($data->employee_name ?? '') }}" >
                 </div>
                 <div class="d-flex align-items-center gap-4">
                     <label class="contract-title-1" for="">Address:</label>
-                    <input class="input-field" type="text" name="employee_address" value="{{ old("employee_address") }}">
+                    <input class="input-field" type="text" name="employee_address" value="{{ old('employee_address') ?? ($data->employee_address ?? '') }}" >
                 </div>
             </li>
         </ul>
@@ -57,15 +57,20 @@
         </div>
     </div>
     <div class="signature-section">
+        @if(isset($data->signature_step9))
+        <img src="{{ $data->signature_step9 }}" style="width: 150px;">
+         @else
         <canvas id="signaturePad9" class="signature-pad"></canvas>
         <div class="flex-row mt-3">
             <label for="signaturePad9">Signature</label>
             <a href="javascript:;" class="clearsignature" onclick="clearSignature(9)">Clear Signature</a>
             <input type="hidden" id="signature_step9" name="signature_step9" value="{{ old("signature_step9") }}">
+
             @error('signature_step9')
-            <div style="color: red;">{{ $message }}</div>
+                <div style="color: red;">{{ $message }}</div>
             @enderror
         </div>
+        @endif
     </div>
     <div class="form-footer">
         <button type="button" onclick="prevStep()">Previous</button>

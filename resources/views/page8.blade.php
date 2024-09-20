@@ -63,15 +63,20 @@
         </div>
     </div>
     <div class="signature-section">
+        @if(isset($data->signature_step8))
+        <img src="{{ $data->signature_step8 }}" style="width: 150px;">
+         @else
         <canvas id="signaturePad8" class="signature-pad"></canvas>
         <div class="flex-row mt-3">
             <label for="signaturePad8">Signature</label>
             <a href="javascript:;" class="clearsignature" onclick="clearSignature(8)">Clear Signature</a>
             <input type="hidden" id="signature_step8" name="signature_step8" value="{{ old("signature_step8") }}">
+
             @error('signature_step8')
-            <div style="color: red;">{{ $message }}</div>
+                <div style="color: red;">{{ $message }}</div>
             @enderror
         </div>
+        @endif
     </div>
     <div class="form-footer">
         <button type="button" onclick="prevStep()">Previous</button>

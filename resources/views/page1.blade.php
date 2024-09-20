@@ -3,28 +3,51 @@
 <div class="step active">
     <h3 class="contract-title">Employment Contract</h3>
     <div class="parties">
-        <p class="text-center mt-2">THIS EMPLOYMENT CONTRACT (the "Agreement") dated this </p>
-        <div class="flex-row">
-            <label for="contract_day">Day</label>
-            <input type="number" max="31" min="1" required class="input-field" id="contract_day" name="contract_day" value="{{ old('contract_day') }}"  />
-            <span>day of </span>
-            <label for="contract_month">Month</label>
-            <input type="text" type="number" max="12" min="1" required class="input-field" id="contract_month" name="contract_month"
-                value="{{ old('contract_month') }}" />,
-            <label for="contract_year">Year</label>
-            <input type="number" min="1900" max="2100" required class="input-field" id="contract_year" name="contract_year"
-                value="{{ old('contract_year') }}" />.
+        <div class="d-flex align-items-center gap-2 mb-3">
+        <p class="mt-2 mb-0"><strong>THIS EMPLOYMENT CONTRACT</strong> (the "Agreement") dated this </p>
+        <div class="d-flex align-items-center w-25">
+            <?php $contract_day = old("contract_day");
+            if(isset($data->contract_day)) {
+                $contract_day = $data->contract_day;
+            } ?>
+            <input type="number" max="31" min="1" required class="input-field" id="contract_day" name="contract_day" value="{{ $contract_day }}"  placeholder="Day" />
+
+        <span class="w-100"> day of </span>
         </div>
-        <p>BETWEEN:</p>
-        <p><strong>HybridX Inc.<br /></strong> of 50 Steeles Ave E unit 211, Milton Ontario L9T 4W9, Canada (the
+        </div>
+        <div class="flex-row w-50">
+            <?php $contract_month = old("contract_month");
+            if(isset($data->contract_day)) {
+                $contract_month = $data->contract_month;
+            } ?>
+            <!-- <label for="contract_month">Month</label> -->
+            <input type="text" type="number" max="12" min="1" required class="input-field" id="contract_month" name="contract_month"
+            value="{{ $contract_month }}"  placeholder="Month"/>,
+
+            <?php $contract_year = old("contract_year");
+            if(isset($data->contract_day)) {
+                $contract_year = $data->contract_year;
+            } ?>
+            <!-- <label for="contract_year">Year</label> -->
+            <input type="number" min="1900" max="2100" required class="input-field" id="contract_year" name="contract_year"
+                value="{{ $contract_year }}" placeholder="Year"/>.
+
+        </div>
+
+
+        <p class="mt-3"><strong>BETWEEN:</strong></p>
+        <p class="text-center">HybridX Inc. of 50 Steeles Ave E unit 211, Milton Ontario L9T 4W9, <br>Canada (the
             "Employer")</p>
-        <p>OF THE FIRST PART</p>
-        <h5 class="text-center">- AND -</h5>
-        <label for="employee_name">Employee Name</label>
+        <p class="text-end">OF THE FIRST PART</p>
+        <h5 class="text-center"><strong>- AND -</strong></h5>
+        <?php $employee_name = old("employee_name");
+        if(isset($data->employee_name)) {
+            $employee_name = $data->employee_name;
+        } ?>
         <input type="text" required class="input-field w-100" id="employee_name" name="employee_name"
-            value="{{ old('employee_name') }}" />
+            value="{{ $employee_name }}" />
         <p class="text-center mt-2">(the "Employee")</p>
-        <p>OF THE SECOND PART</p>
+        <p class="text-end">OF THE SECOND PART</p>
     </div>
 
     <div class="background">
@@ -49,22 +72,31 @@
         <div class="">
             <p class="clause">
                 <strong>1.</strong> The Employee will commence permanent full-time employment with the Employer on the
-            </p><br />
+            </p>
             <div class="flex-row">
-                <label for="commencement_day">Day</label>
+                <?php $commencement_day = old("commencement_day");
+                if(isset($data->commencement_day)) {
+                    $commencement_day = $data->commencement_day;
+                } ?>
                 <input type="number" max="31" min="1" required class="input-field" id="commencement_day" name="commencement_day"
-                    value="{{ old('commencement_day') }}" />
+                    value="{{ $commencement_day }}"  placeholder="Day"/>
                 <span>day of </span>
-                <label for="commencement_month">Month</label>
+                <?php $commencement_month = old("commencement_month");
+                if(isset($data->commencement_month)) {
+                    $commencement_month = $data->commencement_month;
+                } ?>
                 <input type="number" max="12" min="1" required class="input-field" id="commencement_month" name="commencement_month"
-                    value="{{ old('commencement_month') }}" />,
-                <label for="commencement_year">Year</label>
+                    value="{{ $commencement_month }}"  placeholder="Month"/>,
+                <?php $commencement_year = old("commencement_year");
+                if(isset($data->commencement_year)) {
+                    $commencement_year = $data->commencement_year;
+                } ?>
                 <input type="number" min="1900" max="2100" required class="input-field" id="commencement_year" name="commencement_year"
-                    value="{{ old('commencement_year') }}" />
+                    value="{{ $commencement_year }}"  placeholder="Year"/>
+                    <p class="text-center mt-2">(the "Commencement Date").</p>
             </div>
-            <p class="text-center mt-2">(the "Commencement Date").</p>
         </div>
-        <p class="clause">
+        <p class="clause mt-3">
             <strong>2.</strong> The Employee must successfully complete a probationary period of Eight weeks (the
             'Probationary Period') beginning on the Commencement Date. At any time during the Probationary Period, as
             and where permitted by law, the Employer will have the right to terminate employment without any notice or
@@ -73,6 +105,9 @@
         <!-- Trigger Button -->
 
         <div class="signature-section">
+            @if(isset($data->signature_step1))
+            <img src="{{ $data->signature_step1 }}" style="width: 150px;">
+             @else
             <canvas id="signaturePad1" class="signature-pad"></canvas>
             <div class="flex-row mt-3">
                 <label for="signaturePad1">Signature</label>
@@ -83,6 +118,7 @@
                     <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
+            @endif
 
         </div>
         <!-- Trigger button -->

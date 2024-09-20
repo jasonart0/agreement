@@ -9,7 +9,7 @@
 
         <div class="contract-title text-start">ADDITIONAL TERMS</div>
         <ul>
-            <li class="flex-row"><span>The Employee is expected to generate a minimum sales revenue of</span><span> $<input type="text" class="input-field w-80" id="sales_revenue" name="sales_revenue" value="{{ old("sales_revenue")}}" /></span><span> per week.</span>
+            <li class="flex-row"><span>The Employee is expected to generate a minimum sales revenue of</span><span> $<input type="text" class="input-field w-80" id="sales_revenue" name="sales_revenue" value="{{ old('sales_revenue') ?? ($data->sales_revenue ?? '') }}" /></span><span> per week.</span>
             </li>
             <li>The Employee cannot give office Leads to any other individual or entity, and cannot be employed anywhere else
                 during the term of employment with HybridX Inc.
@@ -17,9 +17,9 @@
             <li>The salary and commission will be paid on 1st and 15th of every month.
             </li>
             <li class="flex-row">
-                <div>The Employee's S.I.N. number is <input type="text" class="input-field w-80" id="sin_number" name="sin_number" value="{{ old("sin_number") }}" /> </div>
+                <div>The Employee's S.I.N. number is <input type="text" class="input-field w-90" id="sin_number" name="sin_number" value="{{ old('sin_number') ?? ($data->sin_number ?? '') }}"/> </div>
                 <div> and the Driver's license number is
-                    <input type="text" class="input-field  w-80" id="drivers_license" name="drivers_license" value="{{ old("drivers_license") }}" />.
+                    <input type="text" class="input-field  w-90" id="drivers_license" name="drivers_license" value="{{ old('drivers_license') ?? ($data->drivers_license ?? '') }}" />.
                 </div>
             </li>
         </ul>
@@ -39,7 +39,7 @@
         <ul>
             <li>For the purpose of this Agreement the following definitions will apply:
 
-                <ul>
+                <ul class="uper">
                     <li>'Work Product' means work product information, including but not limited to, work product resulting from or
                         related to work or projects performed or to be performed for the Employer or for clients of the Employer, of any
                         type or form in any stage of actual or anticipated research and development.
@@ -74,15 +74,20 @@
     </div>
 
     <div class="signature-section">
+        @if(isset($data->signature_step10))
+        <img src="{{ $data->signature_step10 }}" style="width: 150px;">
+         @else
         <canvas id="signaturePad10" class="signature-pad"></canvas>
         <div class="flex-row mt-3">
             <label for="signaturePad10">Signature</label>
             <a href="javascript:;" class="clearsignature" onclick="clearSignature(10)">Clear Signature</a>
             <input type="hidden" id="signature_step10" name="signature_step10" value="{{ old("signature_step10") }}">
+
             @error('signature_step10')
-            <div style="color: red;">{{ $message }}</div>
+                <div style="color: red;">{{ $message }}</div>
             @enderror
         </div>
+        @endif
     </div>
     <div class="form-footer">
         <button type="button" onclick="prevStep()">Previous</button>

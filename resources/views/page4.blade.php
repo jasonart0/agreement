@@ -2,7 +2,7 @@
     <h3 class="contract-title text-start">VACATION</h3>
     <div class="parties">
         <ul>
-            <li class="flex-row">The Employee will be entitled to the following unpaid vacation each year during the term of this Agreement: <input class="input-field" name="vacations" type="text" value="{{ old("vacations") }}"></li>
+            <li class="">The Employee will be entitled to the following unpaid vacation each year during the term of this Agreement: <input class="input-field w-75" name="vacations" type="text" value="{{ old('vacations') ?? ($data->vacations ?? '') }}" ></li>
             <li class="clause">The times and dates for any vacation will be determined by mutual agreement between the Employer and the Employee.</li>
             <li class="clause">deleted</li>
         </ul>
@@ -27,20 +27,21 @@
 
         <!-- Trigger Button -->
 
-        <div class="d-flex" id="openModalBtn">
-            <span>day of </span>
-            <div class="signature-save" id="signature-save"></div>
-        </div>
         <div class="signature-section">
+            @if(isset($data->signature_step4))
+            <img src="{{ $data->signature_step4 }}" style="width: 150px;">
+             @else
             <canvas id="signaturePad4" class="signature-pad"></canvas>
             <div class="flex-row mt-3">
                 <label for="signaturePad4">Signature</label>
                 <a href="javascript:;" class="clearsignature" onclick="clearSignature(4)">Clear Signature</a>
                 <input type="hidden" id="signature_step4" name="signature_step4" value="{{ old("signature_step4") }}">
+
                 @error('signature_step4')
-                <div style="color: red;">{{ $message }}</div>
+                    <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
+            @endif
         </div>
 
         <div class="form-footer">

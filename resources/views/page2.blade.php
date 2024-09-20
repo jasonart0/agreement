@@ -4,7 +4,7 @@
         <ul>
             <li>The initial job title of the Employee will be the following: <strong>Sales representative</strong>.</li>
             <li>The initial job duties the Employee will be expected to perform include:</li>
-            <ul>
+            <ul class="uper">
                 <li>Generating leads.</li>
                 <li>Meeting or exceeding sales goals.</li>
                 <li>Negotiating all contracts with prospective clients.</li>
@@ -26,17 +26,22 @@
             <li>The Employee agrees to abide by the Employer's rules, regulations, policies, and practices, including those concerning work schedules, vacation, and sick leave, as they may from time to time be adopted or modified. </li>
         </ul>
     </div>
-
     <div class="signature-section">
+        @if(isset($data->signature_step2))
+        <img src="{{ $data->signature_step2 }}" style="width: 150px;">
+         @else
         <canvas id="signaturePad2" class="signature-pad"></canvas>
         <div class="flex-row mt-3">
             <label for="signaturePad2">Signature</label>
             <a href="javascript:;" class="clearsignature" onclick="clearSignature(2)">Clear Signature</a>
             <input type="hidden" id="signature_step2" name="signature_step2" value="{{ old("signature_step2") }}">
+
             @error('signature_step2')
-            <div style="color: red;">{{ $message }}</div>
+                <div style="color: red;">{{ $message }}</div>
             @enderror
         </div>
+        @endif
+
     </div>
 
     <div class="form-footer">

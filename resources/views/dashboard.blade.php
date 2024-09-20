@@ -60,7 +60,7 @@
                 <td><img src="{{ $contract->signature_step5 }}" style="width: 100px;" /></td> --}}
                 <td>
                     <!-- You can add actions like View, Edit, Delete here -->
-                    <a href="#">View</a>
+                    <a href="{{ route("generate-pdf", ['id' => $contract->id]) }}">Download</a>
                     {{-- | <a href="#">Edit</a> --}}
                 </td>
             </tr>

@@ -44,15 +44,20 @@
         </div>
 
         <div class="signature-section">
+            @if(isset($data->signature_step6))
+            <img src="{{ $data->signature_step6 }}" style="width: 150px;">
+             @else
             <canvas id="signaturePad6" class="signature-pad"></canvas>
             <div class="flex-row mt-3">
                 <label for="signaturePad6">Signature</label>
                 <a href="javascript:;" class="clearsignature" onclick="clearSignature(6)">Clear Signature</a>
                 <input type="hidden" id="signature_step6" name="signature_step6" value="{{ old("signature_step6") }}">
+
                 @error('signature_step6')
-                <div style="color: red;">{{ $message }}</div>
+                    <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
+            @endif
         </div>
     </div>
     <div class="form-footer">

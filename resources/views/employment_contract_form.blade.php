@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 
 
-    <title>Employment Contract Wizard Form</title>
+    <title><?php echo (isset($data)) ? $data->employee_name." - Contract Agreement" : "Employment Contract Wizard Form"; ?> </title>
     <style>
-        .wizard-step {
-            display: none;
-        }
         .wizard-step.active {
             display: block;
         }
@@ -57,13 +58,18 @@
         canvas {
             border: 1px solid #CCC;
         }
-        .uper li{
-            list-style-type: lower-alpha;
-            margin-top: 10px
+        .uper{
+
+            margin-top: 8px
         }
-        ol li{
-            margin-top: 10px;
+        .uper li{
+
+            margin-top: 0px
+        }
+        ul li{
+            margin-top: 16px;
             font-size: 14px;
+            color: #000;
         }
         .contract-title-1{
             font-size: 16px;
@@ -123,8 +129,13 @@
             /* Reduced margin */
             font-size: 14px;
             /* Smaller font size */
+            color:#000;
         }
+        .wizard-step p{
+              font-size: 14px;
+              color: #000;
 
+          }
         .parties {
             margin-bottom: 10px;
         }
@@ -159,6 +170,9 @@
         }
         .w-80 {
             width: 80%;
+        }
+        .w-90 {
+            width: 90%;
         }
 
         .button-container {
@@ -210,13 +224,33 @@
             cursor: pointer;
         }
 
+        @if(isset($data))
+
+
+        .signature-section .flex-row, .form-footer {
+            display: none;
+        }
+
+        @else
+        .wizard-step {
+            display: none;
+        }
+        @endif
+
         /* Print styles */
         @media print {
-            .btn {
+            .signature-section canvas { width: 150px; }
+            .wizard-step {
+                display: block;
+            }
+            /* Force a page break after the element */
+            .wizard-step {
+                page-break-after: always;
+            }
+            .printbtn, .btn {
                 display: none;
                 /* Hide buttons when printing */
             }
-
             .container {
                 width: 100%;
                 padding: 0;
@@ -225,9 +259,14 @@
         }
     </style>
 
+
+
 </head>
-<bod>
+<body>
+
     <div class="container mt-5">
+
+        <?php //var_dump($data); ?>
 
         @if ($errors->any())
             <div style="color: red;">
@@ -246,11 +285,18 @@
             </div>
         @endif
 
+        @if(isset($data))
+        <a href="#" class="printbtn" rel="nofollow" onclick="window.print(); return false;" >
+            <span class="printfriendly-text2 printandpdf">
+            <img style="border:none;margin-right:6px;" src="http://cdn.printfriendly.com/pf-print-icon.gif" width="16" height="15" alt="">Print </span>
+        </a>
+        @endif
+
         <form id="employmentContractForm" method="POST" action="{{ route('contract.store') }}">
 
             @csrf
             <!-- Step 1: Introduction and Parties -->
-            <div class="wizard-step active" id="step1">
+            <div class="wizard-step active1" id="step1">
                 @include('page1')
 
                 {{-- <div class="contract-header">EMPLOYMENT CONTRACT</div>
@@ -375,7 +421,7 @@
             </div>
 
             <!-- Step 12: Benefits and Vacation -->
-            <div class="wizard-step" id="step12">
+            <div class="wizard-step active" id="step12">
                 @include("page12")
             </div>
 

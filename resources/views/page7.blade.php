@@ -3,7 +3,7 @@
         <ul>
             <li>The obligations to ensure and protect the confidentiality of the Confidential Information imposed on the Employee in this Agreement and any obligations to provide notice under this Agreement will survive the expiration or termination, as the case may be, of this Agreement and will cont nue indefinitely from the date of such expiration or termination.</li>
             <li>The Employee may disclose any of the Confidential Information:
-                <ul>
+                <ul class="uper">
                     <li>To a third party where Employer has consented in writing to such disclosure; or</li>
                     <li>To the extent required by law or by the request or requirement of any judicial, legislative, administrative or other governmental body after providing reasonable prior notice to the Employer.</li>
                 </ul>
@@ -23,30 +23,21 @@
 
     <div class="commencement">
 
-        <div class="d-flex" id="openModalBtn">
-            <span>day of </span>
-            <div class="signature-save" id="signature-save"></div>
-        </div>
-
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="d-flex">
-                    <button type="button" class="btn w-100" id="submitBtn">Submit</button>
-                    <button type="button" class="btn w-100" id="clearBtn">Clear</button>
-                </div>
-            </div>
-        </div>
         <div class="signature-section">
+            @if(isset($data->signature_step7))
+            <img src="{{ $data->signature_step7 }}" style="width: 150px;">
+             @else
             <canvas id="signaturePad7" class="signature-pad"></canvas>
             <div class="flex-row mt-3">
                 <label for="signaturePad7">Signature</label>
                 <a href="javascript:;" class="clearsignature" onclick="clearSignature(7)">Clear Signature</a>
                 <input type="hidden" id="signature_step7" name="signature_step7" value="{{ old("signature_step7") }}">
+
                 @error('signature_step7')
-                <div style="color: red;">{{ $message }}</div>
+                    <div style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
+            @endif
         </div>
         <div class="form-footer">
             <button type="button" onclick="prevStep()">Previous</button>
