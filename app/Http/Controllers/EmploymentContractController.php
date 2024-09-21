@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EmploymentContract;
+use DB;
 
 class EmploymentContractController extends Controller
 {
@@ -59,23 +60,57 @@ class EmploymentContractController extends Controller
 
         ]);
 
-        // Save the validated data into the database
-        EmploymentContract::create($validated);
 
-        // Redirect to a success page (you can create this view)
-        return redirect()->route('contract.form')->with('success', 'Contract submitted successfully!');
+         // Use try-catch block to handle the database operation
+        try {
+            // Start transaction
+            DB::beginTransaction();
+
+            // Save the validated data into the database
+            $contract = EmploymentContract::create($validated);
+            $contract_id = base64_encode($contract->id);
+
+
+            // Commit transaction
+            DB::commit();
+
+            // Redirect to another route on success with a success message
+            // Return a view and pass the created record to it
+            return redirect()->route('success-form', ['id' => $contract_id])
+                         ->with('success', 'Contract submitted successfully!');
+                            ;
+        } catch (\Exception $e) {
+            // Rollback transaction in case of error
+            DB::rollBack();
+
+            // Redirect back to the form with an error message
+            // Redirect to a success page (you can create this view)
+
+            return redirect()->route('contract.form')->with('error', 'Failed to submit the contract. Please try again.');
+        }
 
     }
 
 
 
     // Show the dashboard with all contracts
-    public function showDashboard()
+    public function showDashboard(Request $request)
     {
-        // Fetch all records from the employment_contracts table
-        $contracts = EmploymentContract::all();
-        // dd($contracts);
+        if(!empty($request->get('search'))) {
+            $search = $request->get('search');
 
+            $contracts = EmploymentContract::when($search, function($query, $search) {
+                return $query->where('employee_name', 'like', "%{$search}%")
+                            ->orWhere('employee_address', 'like', "%{$search}%");
+            })
+            ->orderBy('id', 'desc') // Order by ID in descending order
+            ->paginate(10); // Adjust pagination count as needed
+        } else {
+
+            // Fetch all records from the employment_contracts table
+            $contracts = EmploymentContract::orderBy("id", 'desc')->paginate(10);
+            // dd($contracts);
+        }
         // Pass the contracts data to the dashboard view
         return view('dashboard', compact('contracts'));
     }

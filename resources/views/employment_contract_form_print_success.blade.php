@@ -551,8 +551,31 @@
         @endif
 
         @if (isset($data))
+
+        <!-- Hidden button to trigger the modal -->
+            <button id="hiddenButton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#successModal" style="display: none;">
+                Launch modal
+            </button>
+
+            <!-- Bootstrap Modal -->
+            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                    <div class="modal-content1 alert alert-success">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Contract submitted successfully!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="flex-row">
-                <a class="btn btn-primary printbtn" href="{{ route('dashboard') }}">Back</a> &nbsp;
                 <a href="#" class="btn btn-primary printbtn" rel="nofollow"
                     onclick="window.print(); return false;">
                     <span class="printfriendly-text2 printandpdf">
@@ -562,99 +585,27 @@
             </div>
         @endif
 
-        <form id="employmentContractForm" method="POST" action="{{ route('contract.store') }}">
+        <form id="employmentContractForm" method="POST" action="">
 
             @csrf
             <!-- Step 1: Introduction and Parties -->
             <div class="wizard-step active1" id="step1">
                 @include('page1')
-
-                {{-- <div class="contract-header">EMPLOYMENT CONTRACT</div>
-                <div class="form-section">
-                    <p>This Employment Contract (the "Agreement") is entered into between:</p>
-                    <label for="employer_name">Employer Name</label>
-                    <input type="text" id="employer_name" name="employer_name" required value="{{ old("employer_name") }}">
-                    @error('employer_name')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="employer_address">Employer Address</label>
-                    <input type="text" id="employer_address" name="employer_address" required value="{{ old("employer_address") }}">
-                    @error('employer_address')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="employee_name">Employee Name</label>
-                    <input type="text" id="employee_name" name="employee_name" required value="{{ old("employee_name") }}">
-                    @error('employee_name')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                --}}
             </div>
 
             <!-- Step 2: Job Title and Description -->
             <div class="wizard-step" id="step2">
                 @include('page2')
-                {{-- <div class="contract-header">JOB TITLE AND DESCRIPTION</div>
-                <div class="form-section">
-                    <label for="job_title">Job Title</label>
-                    <input type="text" id="job_title" name="job_title" required value="{{ old("job_title") }}">
-                    @error('job_title')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="job_duties">Job Duties</label>
-                    <textarea id="job_duties" name="job_duties" required rows="6">{{ old("job_duties") }}</textarea>
-                    @error('job_duties')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
-
             </div>
 
             <!-- Step 3: Employee Compensation -->
             <div class="wizard-step" id="step3">
                 @include('page3')
-
-                {{-- <div class="contract-header">EMPLOYEE COMPENSATION</div>
-                <div class="form-section">
-                    <label for="salary">Salary</label>
-                    <input type="text" id="salary" name="salary" required value="{{ old("salary") }}">
-                    @error('salary')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="commission">Commission (Percentage)</label>
-                    <input type="text" id="commission" name="commission" required value="{{ old("commission") }}">
-                    @error('commission')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
-
             </div>
 
             <!-- Step 4: Benefits and Vacation -->
             <div class="wizard-step" id="step4">
                 @include('page4')
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                    <label for="vacation_days">Number of Vacation Days</label>
-                    <input type="number" id="vacation_days" name="vacation_days" required value="{{ old("vacation_days") }}">
-                    @error('vacation_days')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="benefits">Benefits</label>
-                    <textarea id="benefits" name="benefits" required rows="4">{{ old("benefits") }}</textarea>
-                    @error('benefits')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
             </div>
 
             <!-- Step 5: Confidentiality and Final Submission -->
@@ -699,164 +650,29 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- JavaScript to trigger the hidden button click -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.signature-container').forEach(container => {
-                const openModalBtn = container.querySelector('.openModalBtn');
-                const modal = container.querySelector('.signatureModal');
-                const closeModal = container.querySelector('.close');
-                const canvas = container.querySelector('.signatureCanvas');
-                const ctx = canvas.getContext('2d');
-                const submitSignature = container.querySelector('.submitSignature');
-                const clearSignature = container.querySelector('.clearSignature');
-                const signatureInput = container.querySelector('.signature-input');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate a click on the hidden button after the page has loaded
+            document.getElementById('hiddenButton').click();
 
-                let drawing = false;
+        });
 
-                // Open modal when the button is clicked
-                openModalBtn.addEventListener('click', () => {
-                    modal.style.display = 'block';
-                });
+        // Add event listener to remove backdrop on modal hide
+        var myModal = document.getElementById('successModal');
+        myModal.addEventListener('show.bs.modal', function () {
+            // Ensure the backdrop is removed after a delay
+            setTimeout(function() {
+                var backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();
+                }
+            }, 1000);
 
-                // Close modal
-                closeModal.addEventListener('click', () => {
-                    modal.style.display = 'none';
-                });
-
-                // Start drawing
-                canvas.addEventListener('mousedown', () => {
-                    drawing = true;
-                });
-
-                // Draw on the canvas
-                canvas.addEventListener('mousemove', (event) => {
-                    if (drawing) {
-                        const rect = canvas.getBoundingClientRect();
-                        const x = event.clientX - rect.left;
-                        const y = event.clientY - rect.top;
-                        ctx.lineTo(x, y);
-                        ctx.stroke();
-                    }
-                });
-
-                // Stop drawing
-                canvas.addEventListener('mouseup', () => {
-                    drawing = false;
-                    ctx.beginPath();
-                });
-
-                // Clear the canvas
-                clearSignature.addEventListener('click', () => {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                });
-
-                // Submit the signature and store it in the hidden input field
-                submitSignature.addEventListener('click', () => {
-                    const dataURL = canvas.toDataURL('image/png'); // Base64 image format
-                    signatureInput.value = dataURL; // Store the base64 string in the hidden input
-
-                    // Optionally close the modal after submitting
-                    modal.style.display = 'none';
-                });
-            });
         });
     </script>
-    <script>
-        let currentStep = 1;
-        let signaturePads = [];
-
-        // Initialize signature pads for each step where a signature is required
-        function initializeSignaturePad(step) {
-            const canvas = document.getElementById(`signaturePad${step}`);
-            const signaturePad = new SignaturePad(canvas);
-            signaturePads[step - 1] = signaturePad;
-        }
-
-        // Call the function to initialize signature pads on the respective steps
-        initializeSignaturePad(1);
-        initializeSignaturePad(2);
-        initializeSignaturePad(3);
-        initializeSignaturePad(4);
-        initializeSignaturePad(5);
-        initializeSignaturePad(6);
-        initializeSignaturePad(7);
-        initializeSignaturePad(8);
-        initializeSignaturePad(9);
-        initializeSignaturePad(10);
-        initializeSignaturePad(11);
-        initializeSignaturePad(12);
-        // Add more signature pads for other steps as needed
-
-        // Function to show the current step and hide others
-        function showStep(step) {
-            document.querySelectorAll('.wizard-step').forEach((el) => {
-                el.classList.remove('active');
-            });
-            document.getElementById('step' + step).classList.add('active');
-        }
-
-        // Function to move to the next step, checking validation
-        function nextStep() {
-            let isValid = validateCurrentStep();
-            if (isValid) {
-                currentStep++;
-                showStep(currentStep);
-            }
-        }
-
-        // Function to move to the previous step
-        function prevStep() {
-            currentStep--;
-            showStep(currentStep);
-        }
-
-        // Validate the current step's fields and signature
-        function validateCurrentStep() {
-            const form = document.getElementById('employmentContractForm');
-            const currentStepElement = document.getElementById(`step${currentStep}`);
-
-            // Check all required inputs on the current step
-            let requiredFields = currentStepElement.querySelectorAll(
-                'input[required], textarea[required], select[required]');
-            for (let i = 0; i < requiredFields.length; i++) {
-                if (!requiredFields[i].value) {
-                    requiredFields[i].focus();
-                    alert("Please fill out all required fields.");
-                    return false;
-                }
-            }
-
-            // Check if the signature is provided (using Signature Pad)
-            if (signaturePads[currentStep - 1] && signaturePads[currentStep - 1].isEmpty()) {
-                alert("Please provide your signature.");
-                return false;
-            }
-
-            return true;
-        }
-
-        // Clear signature for a particular step
-        function clearSignature(step) {
-            signaturePads[step - 1].clear();
-        }
-
-        // Capture the signature image (in base64 format) and store it in the hidden input before form submission
-        document.getElementById('employmentContractForm').addEventListener('submit', function(event) {
-            signaturePads.forEach((pad, index) => {
-                if (!pad.isEmpty()) {
-                    var signatureval = document.getElementById(`signature_step${index + 1}`).value = pad
-                        .toDataURL(); // Convert to base64
-                    console.log(signatureval);
-                } else {
-                    alert(`Please sign in step ${index + 1}`);
-                    event.preventDefault(); // Prevent form submission
-                }
-            });
-        });
-    </script>
-
 
 </body>
 

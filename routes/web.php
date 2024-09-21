@@ -15,21 +15,22 @@ use App\Http\Controllers\PDFController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [EmploymentContractController::class, 'showForm'])->name('contract.form');
 
 
 // Route to display the form
-Route::get('/employment-contract', [EmploymentContractController::class, 'showForm'])->name('contract.form');
+// Route::get('/employment-contract', [EmploymentContractController::class, 'showForm'])->name('contract.form');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [EmploymentContractController::class, 'showDashboard'])->name('dashboard');
+    Route::get('/generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');
+});
+
+Route::get('/success/{id}', [PDFController::class, 'generatePDFSave'])->name('success-form');
 // Route to handle form submission (POST)
 Route::post('/employment-contract/store', [EmploymentContractController::class, 'store'])->name('contract.store');
-Route::get('/dashboard', [EmploymentContractController::class, 'showDashboard'])->name('dashboard');
-
+// Route::get('/dashboard', [EmploymentContractController::class, 'showDashboard'])->name('dashboard');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');

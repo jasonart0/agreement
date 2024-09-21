@@ -33,14 +33,14 @@
             <strong>IN WITNESS WHEREOF,</strong> The parties have duly affixed their signatures under hand and seal on
             this
         <div class="d-flex gap-2">
-            <?php $widtness_day = ($data) ? $data->widtness_day : old("widtness_day"); ?>
+            <?php $widtness_day = (isset($data)) ? $data->widtness_day : old("widtness_day"); ?>
             <span><input type="number" min="1" max="31" class="input-field w-90" name="widtness_day" value="{{ $widtness_day }}"
                     id="witness-day" placeholder="Day" /></span>
             <span>day of</span>
-            <?php $widtness_month = ($data) ? $data->widtness_month : old("widtness_month"); ?>
+            <?php $widtness_month = (isset($data)) ? $data->widtness_month : old("widtness_month"); ?>
             <span><input type="number" min="1" max="12" class="input-field w-80" name="widtness_month" value="{{ $widtness_month }}"
                     id="witness-month" placeholder="Month" />,</span>
-                    <?php $widtness_year = ($data) ? $data->widtness_year : old("widtness_year"); ?>
+                    <?php $widtness_year = (isset($data)) ? $data->widtness_year : old("widtness_year"); ?>
             <span> <input type="number" min="1900" max="2100" class="input-field w-90" name="widtness_year" value="{{ $widtness_year }}"
                     id="witness-year" placeholder="Year" />.</span>
         </div>
@@ -49,13 +49,13 @@
         <div class="signatures flex-row">
             <div class="w-50">
                 <div class="signature-block">
-                    <?php $fitness_field_one = ($data) ? $data->fitness_field_one : old("fitness_field_one"); ?>
+                    <?php $fitness_field_one = (isset($data)) ? $data->fitness_field_one : old("fitness_field_one"); ?>
                     <input type="text" class="input-field w-90" name="fitness_field_one" value="{{ $fitness_field_one }}"/>
                     <p>Witness</p>
                 </div>
 
                 <div class="signature-block">
-                    <?php $witness_name_1 = ($data) ? $data->witness_name_1 : old("witness_name_1"); ?>
+                    <?php $witness_name_1 = (isset($data)) ? $data->witness_name_1 : old("witness_name_1"); ?>
                     <input type="text" class="input-field w-90" name="witness_name_1" value="{{ $witness_name_1 }}" />
                     <p>Witness</p>
                 </div>
@@ -63,15 +63,14 @@
             <div class="w-50">
                 <div class="signature-block">
                     <p><strong>HybridX Inc.</strong></p>
-                    <?php $witness_person = ($data) ? $data->witness_person : old("witness_person"); ?>
+                    <?php $witness_person = (isset($data)) ? $data->witness_person : old("witness_person"); ?>
                     <p class="flex-row">Per:<input type="text" class="input-field w-90" name="witness_person" value="{{ $witness_person }}" /></p>
-                    <?php $witness_person_name =  ($data) ? $data->witness_person_name : old("witness_person_name"); ?>
+                    <?php $witness_person_name =  (isset($data)) ? $data->witness_person_name : old("witness_person_name"); ?>
                     <p class="flex-row">Name:<input type="text" class="input-field w-90" name="witness_person_name" value="{{ $witness_person_name }}" /></p>
                 </div>
                 <div class="signature-block">
-                    <?php $witness_field2 = ($data) ? $data->witness_field2 : old("witness_field2"); ?>
+                    <?php $witness_field2 = (isset($data)) ? $data->witness_field2 : old("witness_field2"); ?>
                     <p><input type="text" class="input-field w-90" name="witness_field2" value="{{ $witness_field2 }}"/></p>
-                    <p>Marcuse Cornhill</p>
                 </div>
             </div>
         </div>
@@ -86,7 +85,7 @@
             <div class="flex-row mt-3">
                 <label for="signaturePad12">Signature</label>
                 <a href="javascript:;" class="clearsignature" onclick="clearSignature(12)">Clear Signature</a>
-                <?php $signature_step12 = ($data) ? $data->signature_step12 : old("signature_step12"); ?>
+                <?php $signature_step12 = (isset($data)) ? $data->signature_step12 : old("signature_step12"); ?>
                 <input type="hidden" id="signature_step12" name="signature_step12" value="{{ $signature_step12 }}"
                     value="{{ old('signature_step12') }}">
 

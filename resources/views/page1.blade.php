@@ -21,7 +21,7 @@
                 $contract_month = $data->contract_month;
             } ?>
             <!-- <label for="contract_month">Month</label> -->
-            <input type="text" type="number" max="12" min="1" required class="input-field" id="contract_month" name="contract_month"
+            <input type="number" max="12" min="1" required class="input-field" id="contract_month" name="contract_month"
             value="{{ $contract_month }}"  placeholder="Month"/>,
 
             <?php $contract_year = old("contract_year");

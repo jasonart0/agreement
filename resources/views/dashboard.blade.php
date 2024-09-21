@@ -1,72 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+@extends('layouts.app')
 
-        table, th, td {
-            border: 1px solid black;
-        }
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
+                <div class="card-body">
+                        <h1>Employment Contracts Dashboard</h1>
 
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
+                        <!-- Search Form -->
+                        <form action="" method="GET" class="mb-4">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search by employee name or address" value="{{ request()->get('search') }}">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </form>
 
-<h1>Employment Contracts Dashboard</h1>
+                        <!-- Dynamic Table displaying data from employment_contracts table -->
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Employee Address</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($contracts as $contract)
+                                    <tr>
+                                        <td>{{ $contract->employee_name }}</td>
+                                        <td>{{ $contract->employee_address }}</td>
+                                        <td>
+                                            <a href="{{ route("generate-pdf", ['id' => $contract->id]) }}" class="btn btn-sm btn-success">Download</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-<!-- Dynamic Table displaying data from employment_contracts table -->
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Employer Name</th>
-            <th>Employee Name</th>
-            <th>Employee Address</th>
-            <!-- <th>Job Title</th>
-            <th>Signature 1</th>
-            <th>Signature 2</th>
-            <th>Signature 3</th>
-            <th>Signature 4</th>
-            <th>Signature 5</th> -->
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($contracts as $contract)
-            <tr>
-                <td>{{ $contract->id }}</td>
-                <td>{{ $contract->employer_name }}</td>
-                <td>{{ $contract->employee_name }}</td>
-                <td>{{ $contract->employee_address }}</td>
-                <!-- <td>{{ $contract->job_title }}</td> -->
-                {{-- <td><img src="{{ $contract->signature_step1 }}" style="width: 100px;" /></td>
-                <td><img src="{{ $contract->signature_step2 }}" style="width: 100px;" /></td>
-                <td><img src="{{ $contract->signature_step3 }}" style="width: 100px;" /></td>
-                <td><img src="{{ $contract->signature_step4 }}" style="width: 100px;" /></td>
-                <td><img src="{{ $contract->signature_step5 }}" style="width: 100px;" /></td> --}}
-                <td>
-                    <!-- You can add actions like View, Edit, Delete here -->
-                    <a href="{{ route("generate-pdf", ['id' => $contract->id]) }}">Download</a>
-                    {{-- | <a href="#">Edit</a> --}}
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-
-</body>
-</html>
+                        <!-- Pagination Links -->
+                        <div class="d-flex justify-content-center">
+                            {{ $contracts->appends(request()->query())->links() }}
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

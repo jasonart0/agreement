@@ -45,6 +45,8 @@
             margin-top: 30px;
             padding-top: 10px;
             width: 300px;
+            margin-bottom: 20px;
+            margin-left: auto;
         }
         .clearsignature {
             color: #000;
@@ -266,7 +268,6 @@
 
     <div class="container mt-5">
 
-        <?php //var_dump($data); ?>
 
         @if ($errors->any())
             <div style="color: red;">
@@ -296,7 +297,7 @@
 
             @csrf
             <!-- Step 1: Introduction and Parties -->
-            <div class="wizard-step active1" id="step1">
+            <div class="wizard-step active" id="step1">
                 @include('page1')
 
                 {{-- <div class="contract-header">EMPLOYMENT CONTRACT</div>
@@ -421,7 +422,7 @@
             </div>
 
             <!-- Step 12: Benefits and Vacation -->
-            <div class="wizard-step active" id="step12">
+            <div class="wizard-step" id="step12">
                 @include("page12")
             </div>
 
