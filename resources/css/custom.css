@@ -1,0 +1,96 @@
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  -webkit-print-color-adjust: exact;
+}
+
+.container {
+  width: 100%;
+  max-width: 190mm; /* Reduced width to fit on A4 */
+  margin: 0 auto;
+  padding: 10mm; /* Reduced padding */
+  box-sizing: border-box;
+}
+
+.contract-title {
+  text-align: center;
+  font-size: 18px; /* Smaller font size */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-weight: bold;
+  margin: 10px 0 5px; /* Reduced margin */
+  text-transform: uppercase;
+  font-size: 14px; /* Smaller font size */
+}
+
+.clause {
+  margin-left: 10px; /* Reduced margin */
+  font-size: 12px; /* Smaller font size */
+}
+
+.parties {
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 3px; /* Reduced padding */
+  margin-left: 3px; /* Reduced margin */
+  border: none;
+  border-bottom: 1px solid;
+  font-size: 12px; /* Smaller font size */
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px; /* Reduced margin */
+}
+
+.flex-row input {
+  flex: 1;
+  margin-left: 3px; /* Reduced margin */
+  margin-right: 3px; /* Reduced margin */
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px; /* Reduced margin */
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.btn {
+  font-size: 12px; /* Smaller font size */
+  padding: 5px 10px; /* Reduced padding */
+}
+
+/* Print styles */
+@media print {
+  .btn {
+    display: none; /* Hide buttons when printing */
+  }
+
+  .container {
+    width: 100%;
+    padding: 0; /* Remove padding for print */
+  }
+}
