@@ -1,76 +1,108 @@
 <div class="step active">
-    <h3 class="contract-title text-start mt-3">MODIFICATION OF AGREEMENT</h3>
-    <div class="parties">
-
-
+    <div class="definitions">
         <ul>
-            <li>Any amendment or modification of this Agreement or additional obligation assumed by either party in connection with this Agreement will only be binding if evidenced in writing signed by each party or an authorized representative of each party. </li>
-        </ul>
-
-        <div class="contract-title text-start">ADDITIONAL TERMS</div>
-        <ul>
-            <li class="flex-row"><span>The Employee is expected to generate a minimum sales revenue of</span><span> $<input type="text" class="input-field w-80" id="sales_revenue" name="sales_revenue" value="{{ old('sales_revenue') ?? ($data->sales_revenue ?? '') }}" /></span><span> per week.</span>
-            </li>
-            <li>The Employee cannot give office Leads to any other individual or entity, and cannot be employed anywhere else
-                during the term of employment with HybridX Inc.
-            </li>
-            <li>The salary and commission will be paid on 1st and 15th of every month.
-            </li>
-            <li class="flex-row">
-                <div>The Employee's S.I.N. number is <input type="text" class="input-field w-90" id="sin_number" name="sin_number" value="{{ old('sin_number') ?? ($data->sin_number ?? '') }}"/> </div>
-                <div> and the Driver's license number is
-                    <input type="text" class="input-field  w-90" id="drivers_license" name="drivers_license" value="{{ old('drivers_license') ?? ($data->drivers_license ?? '') }}" />.
-                </div>
-            </li>
+            {{-- <li>'Termination Date' means the date specified in this Agreement or in a subsequent notice by either the Employee or the Employer to be the last day of employment under this Agreement. The parties acknowledge that various provisions of this Agreement will survive the Termination Date.</li> --}}
         </ul>
     </div>
 
-    <div class="governing-law">
-        <div class="contract-title text-start">GOVERNING LAW</div>
+    <div class="general-provisions">
+        <div class="contract-title text-start">GENERAL PROVISIONS</div>
         <ul>
             <li>
-                This Agreement will be construed in accordance with and governed by the laws of the Province of Ontario, Canada.
+                'Time is of the essence' in this Agreement.
+            </li>
+            <li>
+                'Headings' are inserted for the convenience of the parties only and are not to be considered
+                when interpreting this Agreement. Words in the singular mean and include the plural and vice versa. Words in the
+                masculine mean and include the feminine and vice versa.
+            </li>
+            <li>
+                'No failure or delay' by either party to this Agreement in exercising any power, right or
+                privilege under the Agreement shall be construed as a waiver thereof.
             </li>
         </ul>
     </div>
 
-    <div class="definitions">
-        <div class="contract-title text-start">DEFINITIONS</div>
+    <div class="general-provisions">
+        <div class="contract-title text-start">GENERAL PROVISIONS</div>
         <ul>
-            <li>For the purpose of this Agreement the following definitions will apply:
-
-                <ul class="uper">
-                    <li>'Work Product' means work product information, including but not limited to, work product resulting from or
-                        related to work or projects performed or to be performed for the Employer or for clients of the Employer, of any
-                        type or form in any stage of actual or anticipated research and development.
-                    </li>
-                    <li>'Computer Software' means computer software resulting from or related to work or projects performed or to be
-                        performed for the Employer or for clients of the Employer, of any type or form in any stage of actual or anticipated
-                        research and development, including but not limited to, programs and program modules, routines and subroutines,
-                        processes, algorithms, design concepts, design specifications (design notes, annotations, documentation,
-                        flowcharts, coding sheets, and the like), source code, object code and load modules.
-                    </li>
-                    <li>modules, programming, program patches, and system designs.</li>
-                </ul>
+            <li>
+                This Agreement will inure to the benefit of and be binding upon the respective heirs, executors,
+                administrators, successors, and assigns, as the case may be, of the Employer and the Employee.
+            </li>
+            <li>
+                This Agreement may be executed in counterparts. Facsimile signatures are binding and are considered to
+                be original signatures.
+            </li>
+            <li>
+                If, at the time of execution of this Agreement, there is a pre-existing employment agreement still in
+                effect between the parties to this Agreement, then in consideration of and as a condition of the parties
+                entering into this Agreement and other valuable consideration, the receipt and sufficiency of which
+                consideration is acknowledged, this Agreement will supersede any and all pre-existing employment
+                agreements between the Employer and the Employee. Any duties, obligations, and liabilities still in
+                effect from any pre-existing employment agreement are void and no longer enforceable after execution of
+                this Agreement.
+            </li>
+            <li>
+                This Agreement constitutes the entire agreement between the parties and there are no further items or
+                provisions, either oral or written. The parties to this Agreement stipulate that neither of them has
+                made any representations with respect to the subject matter of this Agreement except such
+                representations as are specifically set forth in this Agreement.
             </li>
         </ul>
     </div>
 
-    <!-- Trigger Button -->
 
-    <div class="d-flex" id="openModalBtn">
-        <span>day of </span>
-        <div class="signature-save" id="signature-save"></div>
-    </div>
+    <div class="witness-section">
+        <?php $witness_username = (isset($data)) ? $data->witness_username : old("witness_username"); ?>
+        <p class="d-flex gap-2">I <span><input type="text" class="input-field" name="witness_username" placeholder="Name" value="{{ $witness_username }}"
+            id="witness_username"/></span> confirm that I have signed this contract electronically.</p>
+        <p>
+            <strong>IN WITNESS WHEREOF,</strong> The parties have duly affixed their signatures under hand and seal on
+            this
+        </p>
+        <div class="d-flex gap-2 mb-4">
+            <?php $widtness_day = (isset($data)) ? $data->widtness_day : old("widtness_day"); ?>
+            <span><input type="number" min="1" max="31" class="input-field w-90" name="widtness_day" value="{{ $widtness_day }}" id="witness-day" placeholder="Day" /></span>
+            <span>day of</span>
+            <?php $widtness_month = (isset($data)) ? $data->widtness_month : old("widtness_month"); ?>
+            <span><input type="number" min="1" max="11" class="input-field w-80" name="widtness_month" value="{{ $widtness_month }}" id="witness-month" placeholder="Month" />,</span>
+            <?php $widtness_year = (isset($data)) ? $data->widtness_year : old("widtness_year"); ?>
+            <span> <input type="number" min="1900" max="2100" class="input-field w-90" name="widtness_year" value="{{ $widtness_year }}" id="witness-year" placeholder="Year" />.</span>
+        </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="d-flex">
-                <button type="button" class="btn w-100" id="submitBtn">Submit</button>
-                <button type="button" class="btn w-100" id="clearBtn">Clear</button>
+        <div class="signatures">
+            <div class="d-flex justify-content-between gap-4">
+                <div class="w-50">&nbsp;</div>
+                <div class="mb-2 w-50"><strong>HybridX Inc.</strong></div>
+            </div>
+            <div class="d-flex gap-4 justify-content-between mb-2">
+                <div class="signature-block w-50">
+                    <?php $fitness_field_one = (isset($data)) ? $data->fitness_field_one : old("fitness_field_one"); ?>
+                    <input type="text" class="input-field w-90 mb-1" name="fitness_field_one" value="{{ $fitness_field_one }}"/>
+                    <p>Witness</p>
+                </div>
+                <div class="signature-block w-50">
+                    <?php $witness_person = (isset($data)) ? $data->witness_person : old("witness_person"); ?>
+                    <div class="flex-row">Per:<input type="text" class="input-field w-90" name="witness_person" value="{{ $witness_person }}" /></div>
+                    <?php $witness_person_name =  (isset($data)) ? $data->witness_person_name : old("witness_person_name"); ?>
+                    <p class="flex-row">Name:<input type="text" class="input-field w-90" name="witness_person_name" value="{{ $witness_person_name }}" /></p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between gap-4">
+                <div class="signature-block w-50">
+                    <?php $witness_name_1 = (isset($data)) ? $data->witness_name_1 : old("witness_name_1"); ?>
+                    <p><input type="text" class="input-field w-90" name="witness_name_1" value="{{ $witness_name_1 }}" /></p>
+                    <p>Witness</p>
+                </div>
+                <div class="signature-block w-50">
+                    <?php $witness_field2 = (isset($data)) ? $data->witness_field2 : old("witness_field2"); ?>
+                    <div><p><input type="text" class="input-field" name="witness_field2" value="{{ $witness_field2 }}"/></p>
+                    <p>Vikram Dutta / Mohsin Gafri</p></div>
+                </div>
             </div>
         </div>
+
     </div>
 
     <div class="signature-section">
@@ -90,8 +122,7 @@
         @endif
     </div>
     <div class="form-footer">
-        <button type="button" onclick="prevStep()">Previous</button>
-        <button type="button" onclick="nextStep()">Next</button>
+        <input type="submit" class="btn btn-primary" value="Submit">
     </div>
     {{-- <button type="button" class="" onclick="nextStep()">Next</button> --}}
 </div>

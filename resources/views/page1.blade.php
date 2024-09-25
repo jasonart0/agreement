@@ -97,7 +97,7 @@
             </div>
         </div>
         <p class="clause mt-3">
-            <strong>2.</strong> The Employee must successfully complete a probationary period of Eight weeks (the
+            <strong>2.</strong> The Employee must successfully complete a probationary period of 16 weeks (the
             'Probationary Period') beginning on the Commencement Date. At any time during the Probationary Period, as
             and where permitted by law, the Employer will have the right to terminate employment without any notice or
             compensation to the Employee other than wages owed for hours of work already completed.

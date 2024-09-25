@@ -301,93 +301,21 @@
             <!-- Step 1: Introduction and Parties -->
             <div class="wizard-step active" id="step1">
                 @include('page1')
-
-                {{-- <div class="contract-header">EMPLOYMENT CONTRACT</div>
-                <div class="form-section">
-                    <p>This Employment Contract (the "Agreement") is entered into between:</p>
-                    <label for="employer_name">Employer Name</label>
-                    <input type="text" id="employer_name" name="employer_name" required value="{{ old("employer_name") }}">
-                    @error('employer_name')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="employer_address">Employer Address</label>
-                    <input type="text" id="employer_address" name="employer_address" required value="{{ old("employer_address") }}">
-                    @error('employer_address')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="employee_name">Employee Name</label>
-                    <input type="text" id="employee_name" name="employee_name" required value="{{ old("employee_name") }}">
-                    @error('employee_name')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                --}}
             </div>
 
             <!-- Step 2: Job Title and Description -->
             <div class="wizard-step" id="step2">
                 @include("page2")
-                {{-- <div class="contract-header">JOB TITLE AND DESCRIPTION</div>
-                <div class="form-section">
-                    <label for="job_title">Job Title</label>
-                    <input type="text" id="job_title" name="job_title" required value="{{ old("job_title") }}">
-                    @error('job_title')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="job_duties">Job Duties</label>
-                    <textarea id="job_duties" name="job_duties" required rows="6">{{ old("job_duties") }}</textarea>
-                    @error('job_duties')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
-
             </div>
 
             <!-- Step 3: Employee Compensation -->
             <div class="wizard-step" id="step3">
                 @include("page3")
-
-                {{-- <div class="contract-header">EMPLOYEE COMPENSATION</div>
-                <div class="form-section">
-                    <label for="salary">Salary</label>
-                    <input type="text" id="salary" name="salary" required value="{{ old("salary") }}">
-                    @error('salary')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="commission">Commission (Percentage)</label>
-                    <input type="text" id="commission" name="commission" required value="{{ old("commission") }}">
-                    @error('commission')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
-
             </div>
 
             <!-- Step 4: Benefits and Vacation -->
             <div class="wizard-step" id="step4">
                 @include("page4")
-                {{-- <div class="contract-header">BENEFITS AND VACATION</div>
-                <div class="form-section">
-                    <label for="vacation_days">Number of Vacation Days</label>
-                    <input type="number" id="vacation_days" name="vacation_days" required value="{{ old("vacation_days") }}">
-                    @error('vacation_days')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-
-                    <label for="benefits">Benefits</label>
-                    <textarea id="benefits" name="benefits" required rows="4">{{ old("benefits") }}</textarea>
-                    @error('benefits')
-                        <div style="color: red;">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
             </div>
 
             <!-- Step 5: Confidentiality and Final Submission -->
@@ -416,16 +344,6 @@
             <!-- Step 10: Benefits and Vacation -->
             <div class="wizard-step" id="step10">
                 @include("page10")
-            </div>
-
-            <!-- Step 11: Benefits and Vacation -->
-            <div class="wizard-step" id="step11">
-                @include("page11")
-            </div>
-
-            <!-- Step 12: Benefits and Vacation -->
-            <div class="wizard-step" id="step12">
-                @include("page12")
             </div>
 
         </form>

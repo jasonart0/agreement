@@ -17,6 +17,7 @@ class AddWitnessAndFitnessFieldsToEmploymentContractsTable extends Migration
             $table->string('sales_revenue')->unsigned()->nullable();
             $table->integer('widtness_day')->unsigned()->nullable()->comment('Witness Day of Signing');
             $table->integer('widtness_month')->unsigned()->nullable()->comment('Witness Month of Signing');
+            $table->integer('witness_username')->unsigned()->nullable()->comment('Witness Username of Signing');
             $table->integer('widtness_year')->unsigned()->nullable()->comment('Witness Year of Signing');
             $table->string('fitness_field_one', 255)->nullable()->comment('Fitness-related Field One');
             $table->string('witness_name_1', 255)->nullable()->comment('Name of Witness 1');

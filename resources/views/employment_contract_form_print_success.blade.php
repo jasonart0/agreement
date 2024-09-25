@@ -255,7 +255,9 @@
             }
             /* Force a page break after the element */
             .wizard-step {
-                page-break-after: always;
+                page-break-inside: avoid; /* Prevents breaking inside the wizard-step */
+                page-break-before: auto;  /* Adds a page break before if necessary */
+                page-break-after: auto;   /* Adds a page break after if necessary */
             }
             .printbtn, .btn {
                 display: none;
@@ -268,261 +270,6 @@
             }
         }
     </style>
-     <!-- <style>
-        /* Combined Stylesheet */
-
-        /* Wizard step and active state */
-        .wizard-step.active {
-            display: block;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button[disabled] {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        .form-section {
-            margin-bottom: 40px;
-        }
-
-        .contract-header {
-            text-align: center;
-            font-size: 18px;
-            margin-bottom: 40px;
-            font-weight: bold;
-        }
-
-        .form-footer {
-            text-align: right;
-        }
-
-        .signature-section {
-            margin-top: 30px;
-            padding-top: 10px;
-            width: 300px;
-            margin-bottom: 20px;
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .clearsignature {
-            color: #000;
-            text-decoration: none;
-            padding: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .signature-label {
-            font-style: italic;
-        }
-
-        canvas {
-            border: 1px solid #CCC;
-        }
-
-        .uper {
-            margin-top: 8px;
-        }
-
-        .uper li {
-            margin-top: 0px;
-        }
-
-        ul li {
-            margin-top: 16px;
-            font-size: 14px;
-            color: #000;
-        }
-
-        .contract-title-1 {
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #000;
-        }
-
-        .signature-container,
-        #openModalBtn {
-            display: none !important;
-        }
-
-        /* Page settings */
-        @page {
-            size: A4;
-            margin: 10mm;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.4;
-            -webkit-print-color-adjust: exact;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 180mm;
-            margin: 0 auto;
-            padding: 10mm;
-            box-sizing: border-box;
-        }
-
-        .contract-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .section-title {
-            font-weight: bold;
-            margin: 10px 0 5px;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        .clause {
-            margin-left: 10px;
-            font-size: 14px;
-            color: #000;
-        }
-
-        .wizard-step p {
-            font-size: 14px;
-            color: #000;
-        }
-
-        .parties {
-            margin-bottom: 10px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 3px;
-            margin-left: 3px;
-            border: none;
-            max-height: 61px;
-            border-bottom: 1px solid;
-            font-size: 12px;
-        }
-
-        .flex-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 5px;
-        }
-
-        .flex-row input {
-            flex: 1;
-            margin-left: 3px;
-            margin-right: 3px;
-        }
-
-        .w-80 {
-            width: 80%;
-        }
-
-        .w-90 {
-            width: 90%;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .btn {
-            font-size: 12px;
-            padding: 5px 10px;
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Conditional Styles based on $data */
-        @if (isset($data))
-            .signature-section .flex-row,
-            .form-footer {
-                display: none;
-            }
-        @else
-            .wizard-step {
-                display: none;
-            }
-        @endif
-
-        /* Print styles */
-        @media print {
-            .signature-section canvas {
-                width: 150px;
-            }
-
-            .wizard-step {
-                display: block;
-            }
-
-            .wizard-step {
-                page-break-after: always;
-            }
-
-            .printbtn,
-            .btn {
-                display: none;
-            }
-
-            .container {
-                width: 100%;
-                padding: 0;
-            }
-        }
-    </style> -->
-
-
 
 </head>
 
@@ -565,7 +312,7 @@
 
             @csrf
             <!-- Step 1: Introduction and Parties -->
-            <div class="wizard-step active1" id="step1">
+            <div class="wizard-step active" id="step1">
                 @include('page1')
             </div>
 
@@ -610,16 +357,6 @@
             <!-- Step 10: Benefits and Vacation -->
             <div class="wizard-step" id="step10">
                 @include('page10')
-            </div>
-
-            <!-- Step 11: Benefits and Vacation -->
-            <div class="wizard-step" id="step11">
-                @include('page11')
-            </div>
-
-            <!-- Step 12: Benefits and Vacation -->
-            <div class="wizard-step active" id="step12">
-                @include('page12')
             </div>
 
         </form>

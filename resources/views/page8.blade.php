@@ -1,66 +1,61 @@
 <div class="step active">
-    <h3 class="contract-title text-start">RETURN OF CONFIDENTIAL INFORMATION</h3>
     <div class="parties">
+
+
+        <h3 class="contract-title text-start">SEVERABILITY</h3>
         <ul>
-            <li>The Employee agrees that, upon request of the Employer or upon termination or expiration, as the case may be, of this employment, the Employee will turn over to the Employer all Confidential Information belonging to the Employer, including but not limited to, all documents, plans, specifications, disks or other computer media, as well as any duplicates or backups made of that Confidential Information in whatever form or media, in the possession or control of the Employee that:
-                <ul class="uper">
-                    <li>May contain or be derived from ideas, concepts, creations, or trade secrets and other proprietary and Confidential Information as defined in this Agreement; or</li>
-                    <li>Is connected with or derived from the Employee's employment with the Employer.</li>
-                </ul>
+            <li>The Employer and the Employee acknowledge that this Agreement is reasonable, valid, and enforceable. However, if any term, covenant, condition or provision of this Agreement is held by a court of competent jurisdiction to be invalid, void, or unenforceable, it is the parties' intent that such provision be changed in scope by the court only to the extent deemed necessary by that court to render the provision reasonable and enforceable and the remainder of the provisions of this Agreement will in no way be affected, impaired, or invalidated as a result.</li>
+        </ul>
+        <h3 class="contract-title text-start">SEVERABILITY</h3>
+        <ul>
+            <li>Any notices, deliveries, requests, demands, or other communications required here will be deemed to be completed when hand-delivered, delivered by agent, or seven days after being placed in the post, postage prepaid, to the parties at the following addresses or as the parties may later designate in writing:
+                <h3 class="contract-title text-start mt-3">Employer:</h3>
+
+                <div class="d-flex align-items-center gap-5">
+                    <label class="contract-title-1" for="">Name:</label>
+                    <p class="m-0 contract-title-1">HybridX Inc.</p>
+                </div>
+                <div class="d-flex align-items-center gap-4">
+                    <label class="contract-title-1" for="">Address:</label>
+                    <a class="contract-title-1" href="">50 Steeles Ave E unit 211 , Milton Ontario L9T4W9</a>
+                </div>
+                <div class="contract-title text-start text-capitalize mt-3">Employee:</div>
+
+                <div class="d-flex align-items-center gap-5">
+                    <label class="contract-title-1" for="">Name:</label>
+                    <input class="input-field" type="text" name="employee_name" value="{{ old('employee_name') ?? ($data->employee_name ?? '') }}" >
+                </div>
+                <div class="d-flex align-items-center gap-4">
+                    <label class="contract-title-1" for="">Address:</label>
+                    <input class="input-field" type="text" name="employee_address" value="{{ old('employee_address') ?? ($data->employee_address ?? '') }}" >
+                </div>
             </li>
-        </ul>
-        <h3 class="contract-title text-start">CONTRACT BINDING AUTHORITY</h3>
-        <ul>
-            <li>Notwithstanding any other term or condition expressed or implied in this Agreement to the contrary, the Employee will not have the authority to enter into any contracts or commitments for or on the behalf of the Employer without first obtaining the express written consent of the Employer</li>
-        </ul>
-        <h3 class="contract-title text-start">TERMINATION DUE TO DISCONTINUANCE OF BUSINESS</h3>
-        <ul>
-            <li>Notwithstanding any other term or condition expressed or implied in this Agreement, in the event that the Employer will discontinue operating its business at the location where the Employee is employed, then, at the Employer's sole option, and as permitted by law, this Agreement will terminate as of the last day of the month in which the Employer ceases operations at such location with the same force and effect as if such last day of the month were originally set as the Termination Date of this Agreement.</li>
-        </ul>
-        <h3 class="contract-title text-start">TERMINATION OF EMPLOYMENT</h3>
-        <ul>
-            <li>Where there is just cause for termination, the Employer may terminate the Employee's employment without notice, as permitted by law.</li>
-            <li>The Employee and the Employer agree that reasonable and sufficient notice of termination of employment by the Employer is any minimum notice required by law.</li>
-            <li>If the Employee wishes to terminate this employment with the Employer, the Employee will provide the Employer with 60 days notice. As an alternative, if the Employee co-operates with the training and development of a replacement, then sufficient notice is given if it is sufficient notice to allow the Employer to find and train the replacement.</li>
         </ul>
 
     </div>
+    <h3 class="contract-title text-start mt-3">MODIFICATION OF AGREEMENT</h3>
+    <div class="parties">
+        <ul>
+            <li>Any amendment or modification of this Agreement or additional obligation assumed by either party in connection with this Agreement will only be binding if evidenced in writing signed by each party or an authorized representative of each party. </li>
+        </ul>
 
-    <!-- <div class="background">
-        <div class="section-title">Background:</div>
-        <p class="clause">
-            <strong>A.</strong> The Employer is of the opinion that the Employee has the necessary qualifications,
-            experience, and abilities to assist and benefit the Employer in its business.
-        </p>
-        <p class="clause">
-            <strong>B.</strong> The Employer desires to employ the Employee and the Employee has agreed to accept and
-            enter such employment upon the terms and conditions set out in this Agreement.
-        </p>
-        <p>
-            <strong>IN CONSIDERATION OF</strong> the matters described above and of the mutual benefits and obligations
-            set forth in this Agreement, the receipt and sufficiency of which consideration is hereby acknowledged, the
-            parties to this Agreement agree as follows:
-        </p>
-    </div> -->
-
-    <div class="commencement">
-
-        <!-- Trigger Button -->
-
-        <div class="d-flex" id="openModalBtn">
-            <span>day of </span>
-            <div class="signature-save" id="signature-save"></div>
-        </div>
-
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="d-flex">
-                    <button type="button" class="btn w-100" id="submitBtn">Submit</button>
-                    <button type="button" class="btn w-100" id="clearBtn">Clear</button>
+        <div class="contract-title text-start">ADDITIONAL TERMS</div>
+        <ul>
+            <li class="flex-row"><span>The Employee is expected to generate a minimum sales revenue of</span><span> $<input type="text" class="input-field w-80" id="sales_revenue" name="sales_revenue" value="{{ old('sales_revenue') ?? ($data->sales_revenue ?? '') }}" /></span><span> per week.</span>
+            </li>
+            <li>"If an employee takes multiple consecutive days off due to illness, a doctor's note is required. Without this, the time off will be unpaid."</li>
+            <li>The Employee cannot give office Leads to any other individual or entity, and cannot be employed anywhere else
+                during the term of employment with HybridX Inc.
+            </li>
+            <li>The salary and commission will be paid on 1st and 15th of every month.</li>
+            <li class="flex-row">
+                <div>The Employee's S.I.N. number is <input type="text" class="input-field w-90" id="sin_number" name="sin_number" value="{{ old('sin_number') ?? ($data->sin_number ?? '') }}"/> </div>
+                <div> and the Driver's license number is
+                    <input type="text" class="input-field  w-90" id="drivers_license" name="drivers_license" value="{{ old('drivers_license') ?? ($data->drivers_license ?? '') }}" />.
                 </div>
-            </div>
-        </div>
+            </li>
+
+        </ul>
     </div>
     <div class="signature-section">
         @if(isset($data->signature_step8))
@@ -82,4 +77,5 @@
         <button type="button" onclick="prevStep()">Previous</button>
         <button type="button" onclick="nextStep()">Next</button>
     </div>
+    {{-- <button type="button" class="" onclick="nextStep()">Next</button> --}}
 </div>

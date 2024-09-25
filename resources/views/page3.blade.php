@@ -1,19 +1,9 @@
 <div class="step active">
-    <h3 class="contract-title text-start">EMPLOYEE COMPENSATION</h3>
-    <div class="parties">
-        <p class="mt-2">Compensation paid to the Employee for the services rendered by the Employee as required by this Agreement (the "Compensation") will consist of a salary of <span>$<input type="text" required class="input-field w-10" id="salary" name="salary" value="{{ old('salary') ?? ($data->salary ?? '') }}"></span> (CAD) per year plus a commission according to the following commission formula: </p>
-    </div>
-
-
     <div class="commencement">
         <div class="">
-            <p class="flex-row">plus a commission according to the following commission formula: <input class="input-field" name="gross_profit_commission" value="{{ old('gross_profit_commission') ?? ($data->gross_profit_commission ?? '') }}" type="text">  of the Gross profit</p>
             <ul>
-                <li class="clause">Insurance benefits after 3 months of signing the contract.</li>
-                <li class="clause"> Company provides Zoom info software, Cell Phone, and laptop </li>
-                <li class="clause">deleting any data all leads belong to Hybrid X Inc Property. After the termination property is given back in 24 Hrs Last Payment is made after One month of pride. Misleading company property takes legal action against the employees.
-                </li>
-                </u>
+                <li class="clause">deleting any data all leads belong to Hybrid X Inc Property. After the termination property is given back in 24 Hrs Last Payment is made after One month of pride. Misleading company property takes legal action against the employees.</li>
+                </ul>
                 <div>
                     <ul class="uper">
                         <li class="clause">This Compensation will be payable twice per month while this Agreement is in force. The Employer is entitled to deduct from the Employee's Compensation, or from any other compensation in whatever form, any applicable deductions and remittances as required by law.</li>
@@ -27,7 +17,7 @@
                         <li class="clause">
                             <div class="section-title">TIME OF WORK</div>
                         </li>
-                        <li class="clause mb-2">The Employee's normal hours of work, including breaks, ("Normal Hours of Work") are as and remotely follows:<input class="input-field w-25" name="employee_hours" value="{{ old('employee_hours') ?? ($data->employee_hours ?? '') }}" type="text"></li>
+                        <li class="clause mb-2">The Employee's normal hours of work, including breaks, ("Normal Hours of Work") are as and remotely 8 am to 5 Pm:<input class="input-field w-25" name="employee_hours" value="{{ old('employee_hours') ?? ($data->employee_hours ?? '') }}" type="text"></li>
                         <li class="clause">However, the Employee will, on receiving reasonable notice from the Employer, work additional hours and/or hours outside of the Employee's Normal Hours of Work as deemed necessary by the Employer to meet the business needs of the Employer.
                             <div class="section-title">
                                 EMPLOYEE BENEFITS
@@ -37,12 +27,14 @@
                         <li class="clause">Employer discretionary benefits are subject to change, without compensation, upon the Employer providing the Employee with 60 days written notice of that change and providing that any change to those benefits is taken generally with respect to other employees and does not single out the Employee.</li>
                     </ul>
                 </div>
-        </div>
+                <h3 class="contract-title text-start">VACATION</h3>
+                <div class="parties">
+                    <ul>
+                        <li class="">The Employee will be entitled to the following unpaid vacation each year during the term of this Agreement: <input class="input-field w-75" name="vacations" type="text" value="{{ old('vacations') ?? ($data->vacations ?? '') }}" ></li>
+                        <li class="clause">The times and dates for any vacation will be determined by mutual agreement between the Employer and the Employee.</li>
+                    </ul>
+                </div>
 
-
-        <div class="d-flex" id="openModalBtn">
-            <span>day of </span>
-            <div class="signature-save" id="signature-save"></div>
         </div>
 
         <div class="signature-section">

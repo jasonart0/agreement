@@ -41,6 +41,7 @@ class EmploymentContractController extends Controller
             'fitness_field_one' => 'required|string|max:255',
             'witness_name_1' => 'required|string|max:255',
             'witness_person' => 'required|string|max:255',
+            'witness_username' => 'required|string|max:255',
             'witness_person_name' => 'required|string|max:255',
             'witness_field2' => 'required|string|max:255',
 
@@ -55,8 +56,6 @@ class EmploymentContractController extends Controller
             'signature_step8' => 'required|string',
             'signature_step9' => 'required|string',
             'signature_step10' => 'required|string',
-            'signature_step11' => 'required|string',
-            'signature_step12' => 'required|string',
             // Add validation for other signatures and fields
 
         ]);
@@ -96,6 +95,7 @@ class EmploymentContractController extends Controller
                 'fitness_field_one' => $validated['fitness_field_one'],
                 'witness_name_1' => $validated['witness_name_1'],
                 'witness_person' => $validated['witness_person'],
+                'witness_username' => $validated['witness_username'],
                 'witness_person_name' => $validated['witness_person_name'],
                 'witness_field2' => $validated['witness_field2'],
                 'drivers_license' => $validated['drivers_license'],
@@ -109,8 +109,6 @@ class EmploymentContractController extends Controller
                 'signature_step8' => $validated['signature_step8'],
                 'signature_step9' => $validated['signature_step9'],
                 'signature_step10' => $validated['signature_step10'],
-                'signature_step11' => $validated['signature_step11'],
-                'signature_step12' => $validated['signature_step12'],
             ]);
 
             // Save the validated data into the database

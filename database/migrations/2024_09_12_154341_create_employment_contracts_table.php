@@ -36,8 +36,6 @@ class CreateEmploymentContractsTable extends Migration
             // $table->binary('signature_step8');
             // $table->binary('signature_step9');
             // $table->binary('signature_step10');
-            // $table->binary('signature_step11');
-            // $table->binary('signature_step12');
             $table->timestamps();
         });
 
@@ -52,9 +50,6 @@ class CreateEmploymentContractsTable extends Migration
         DB::statement("ALTER TABLE employment_contracts ADD signature_step8 MEDIUMBLOB NOT NULL");
         DB::statement("ALTER TABLE employment_contracts ADD signature_step9 MEDIUMBLOB NOT NULL");
         DB::statement("ALTER TABLE employment_contracts ADD signature_step10 MEDIUMBLOB NOT NULL");
-        DB::statement("ALTER TABLE employment_contracts ADD signature_step11 MEDIUMBLOB NOT NULL");
-        DB::statement("ALTER TABLE employment_contracts ADD signature_step12 MEDIUMBLOB NOT NULL");
-
     }
 
     public function down()

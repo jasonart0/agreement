@@ -26,6 +26,19 @@
             <li>The Employee agrees to abide by the Employer's rules, regulations, policies, and practices, including those concerning work schedules, vacation, and sick leave, as they may from time to time be adopted or modified. </li>
         </ul>
     </div>
+    <h3 class="contract-title text-start">EMPLOYEE COMPENSATION</h3>
+    <div class="parties">
+        <p class="mt-2">Compensation paid to the Employee for the services rendered by the Employee as required by this Agreement (the "Compensation") will consist of a salary of <span>$<input type="text" required class="input-field w-10" id="salary" name="salary" value="{{ old('salary') ?? ($data->salary ?? '') }}"></span> (CAD) per year plus a commission according to the following commission formula: </p>
+    </div>
+    <div class="commencement">
+        <div class="">
+            <p class="flex-row">plus a commission according to the following commission formula: <input class="input-field" name="gross_profit_commission" value="{{ old('gross_profit_commission') ?? ($data->gross_profit_commission ?? '') }}" type="text">  of the Gross profit</p>
+            <ul>
+                <li class="clause">Insurance benefits after 3 months of signing the contract.</li>
+                <li class="clause"> Company provides Zoom info software, Cell Phone, and laptop </li>
+                </ul>
+        </div>
+    </div>
     <div class="signature-section">
         @if(isset($data->signature_step2))
         <img src="{{ $data->signature_step2 }}" style="width: 150px;">

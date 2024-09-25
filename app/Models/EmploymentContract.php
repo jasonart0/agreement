@@ -30,6 +30,7 @@ class EmploymentContract extends Model
         'widtness_year',
         'fitness_field_one',
         'witness_name_1',
+        'witness_username',
         'witness_person',
         'witness_person_name',
         'witness_field2',
@@ -43,8 +44,6 @@ class EmploymentContract extends Model
         'signature_step8',
         'signature_step9',
         'signature_step10',
-        'signature_step11',
-        'signature_step12',
     ];
 }
 

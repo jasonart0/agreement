@@ -255,7 +255,11 @@
             }
             /* Force a page break after the element */
             .wizard-step {
-                page-break-after: always;
+                /* page-break-before: always;
+                page-break-after: always; */
+                page-break-inside: avoid; /* Prevents breaking inside the wizard-step */
+                page-break-before: auto;  /* Adds a page break before if necessary */
+                page-break-after: auto;   /* Adds a page break after if necessary */
             }
             .printbtn, .btn {
                 display: none;
@@ -684,17 +688,6 @@
             <div class="wizard-step" id="step10">
                 @include('page10')
             </div>
-
-            <!-- Step 11: Benefits and Vacation -->
-            <div class="wizard-step" id="step11">
-                @include('page11')
-            </div>
-
-            <!-- Step 12: Benefits and Vacation -->
-            <div class="wizard-step active" id="step12">
-                @include('page12')
-            </div>
-
         </form>
 
     </div>
